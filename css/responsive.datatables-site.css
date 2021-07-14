@@ -1,0 +1,7 @@
+/* 
+Enables content wrapping for individual table columns.
+By default wrapping is disabled by class "nowrap".
+*/
+.responsive-table-dynamic-column{
+    white-space: normal !important;
+}

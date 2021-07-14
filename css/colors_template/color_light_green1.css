@@ -1,0 +1,44 @@
+
+            .footer_class { font-size: 11px; color: #555; }
+            .table-hover tbody tr:hover td, .table-hover tbody tr:hover th
+            {
+                background-color: #CCCC66;
+            }
+            .table-row2:hover {
+                background-color: #CCCC66;
+            }
+            #footer {
+                background-color: #CCCC66;
+                color: #333;
+            }
+            .navbar-default {
+                background-color: #CCCC66;
+                color: #333;
+            }
+            .navbar-default .navbar-nav > .open > a,
+            .navbar-default .navbar-nav > .open > a:hover,
+            .navbar-default .navbar-nav > .open > a:focus,
+            .navbar-default .navbar-nav > .open > a:active {
+                background-color: #CCCC66;
+                color: #333;
+            }
+            .navbar-default .navbar-toggle, .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+                background-color: #CCCC66;
+                color: #333;
+            }
+            .btn-primary {
+                color: #333;
+                background-color: #CCCC66;
+                border-color: #81c1a1;
+            }
+            .btn-primary:hover,
+            .btn-primary:focus,
+            .btn-primary:active,
+            .btn-primary.active {
+                background-color: #81c1a1;
+                border-color: #CCCC66;
+            }
+            .footer_class, a:not([href]):not([tabindex]) {
+                color: #333;
+            }
+            

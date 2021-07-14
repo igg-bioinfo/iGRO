@@ -1,0 +1,142 @@
+.q0-left{
+    text-align: right;
+    font-weight: bold;
+}
+
+.q0-right{
+    text-align: right;
+    font-weight: bold;
+}
+
+.q0-intro{
+    padding: 5px;
+    text-align: right;
+}
+
+.q0-line1{
+    padding: 5px 5px 5px 0 !important;
+}
+
+.q0-line2{
+    padding: 5px 5px 5px 5px !important;
+}
+
+select#jamar_lang.form-control.form-check-inline{
+    margin-right: 0 !important;
+}
+
+.q0-line3{
+    padding: 5px 5px 5px 5px !important;
+    text-align: right;
+}
+
+.q0-line4{
+    padding: 5px 5px 0 0 !important;
+    margin-left: 0;
+}
+
+.q0-line5{
+    padding: 5px 5px 0 5px !important;
+    margin-left: 0;
+}
+
+.q0-line7{
+    padding: 5px 5px 0 0 !important;
+    margin-right: 0;
+}
+
+.q0-line8{
+    padding: 5px 5px 0 5px !important;
+}
+
+div.col-md-5.q0-left.q0-line5 div.alert.alert-light.form-check-inline{
+    margin-right: 0 !important;
+}
+
+div.q-yesno-radio i.fa.fa-circle-thin.fa-2x.align-middle.container-basic{
+    padding-left: 0;
+}
+
+div.q-yesno-radio i.fa.fa-check.fa-2x.testoverde.align-middle.container-basic{
+    padding-left: 0;
+}
+
+.q3-table-row-toleft{
+    text-align: right;
+}
+
+.q3-table-row{
+    padding-right: 5px;
+}
+
+.q-table-row-left{
+    text-align: right;
+    padding-right: 5px;
+}
+
+.radio5-label, .radio4-label, .radio5-cell, .radio4-cell{
+    float: right;
+}
+
+.face-label-left{
+    text-align: right;
+}
+
+.face-label-right{
+    text-align: left;
+}
+
+.table-twoside-border{
+    border-left: 1px solid #ccc;
+    border-right: 0;
+}
+
+.table-twoside-border-top{
+    padding-left: 0;
+}
+
+.table-twoside-border-bottom{
+    padding-right: 0;
+}
+
+.q-yesno-choice{
+    float: right;
+}
+
+.movingradio-button{
+    float: right;
+}
+
+.movingradio-label{
+    text-align: right;
+}
+
+
+@media screen and (min-width: 768px){
+    .q0-right{
+        text-align: left;
+    }
+    .movingradio-button{
+        text-align: center;
+    }
+    .movingradio-label{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .q3-table-row-toleft{
+        text-align: center;
+    }
+    .table-twoside-border{
+        border-left: 0;
+    }
+    .q-yesno-choice-left{
+        padding-left: 0;
+        padding-right: 20%;
+    }
+    .q-yesno-choice-right{
+        padding-right: 0;
+        padding-left: 20%;
+    }
+}

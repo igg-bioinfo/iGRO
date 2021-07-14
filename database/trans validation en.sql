@@ -1,0 +1,38 @@
+BEGIN NOT ATOMIC
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'error_present', 'en', 'validation', 'You must fill in all fields correctly!'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_min_lenght', 'en', 'validation', 'Text should be at least {0} characters long'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_max_lenght', 'en', 'validation', 'Text should be no more than {0} characters long'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_email', 'en', 'validation', 'Please enter a valid email address'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'select_one_option', 'en', 'validation', 'Please select one option'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'related_fields', 'en', 'validation', 'You should complete related fields'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_date', 'en', 'validation', 'Please select a correct date'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_year', 'en', 'validation', 'Please enter a valid 4 digit year'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_web', 'en', 'validation', 'Please enter a valid web address'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_number', 'en', 'validation', 'This field must be a number'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_integer', 'en', 'validation', 'This field must be an integer'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_number_minor', 'en', 'validation', 'This field must be minor than {0}'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_number_major', 'en', 'validation', 'This field must be major than {0}'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_number_minor_equal', 'en', 'validation', 'This field must be minor or equal than {0}'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_number_major_equal', 'en', 'validation', 'This field must be major or equal than {0}'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_minutes', 'en', 'validation', 'Hour and minutes must be inserted in hh:mm format'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'link_expired', 'en', 'validation', 'The link is expired'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'password_format', 'en', 'validation', 'Password must contain minimum {0} characters, at least one uppercase letter, one lowercase letter, one number and one special character'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'match_password', 'en', 'validation', 'Passwords don''t match'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'password_equal_prev', 'en', 'validation', 'New password cannot be equal to old password'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'password_wrong', 'en', 'validation', 'Current password is wrong'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'warning_mobile', 'en', 'validation', 'You have not entered your mobile phone number. The medical staff may need it to contact you.'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'dates_incongruence', 'en', 'validation', 'Dates incongruence'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_precise_lenght', 'en', 'validation', 'Text should be {0} characters long'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'delete_confirmation', 'en', 'validation', 'Are you sure to delete {0} ?'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'required_field', 'en', 'validation', 'Field cannot be empty'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'disabled_submit', 'en', 'validation', 'Ops! There are javascript errors in the page! Submitting is disabled, please contact the administrator.'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'wrong_format', 'en', 'validation', 'This field does not respect the correct format'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_emails', 'en', 'validation', 'Please enter valid email addresses separated by comma'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_date_minor', 'en', 'validation', 'The date must be after {0}'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_date_major', 'en', 'validation', 'The date must be before {0}'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'unsaved_discarded', 'en', 'validation', 'All other unsaved modifications will be discarded'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_date_minor_equal', 'en', 'validation', 'The date must be after or equal to {0}'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_date_major_equal', 'en', 'validation', 'The date must be before or equal to {0}'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'text_empty_spaces', 'en', 'validation', 'Empty spaces are not allowed at the beginning and at the end of this field'; 
+
+END;

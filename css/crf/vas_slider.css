@@ -1,0 +1,54 @@
+.vas-radios{
+    display: none;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.vas-slider{
+    margin: 10px auto 50px auto;
+    width: calc(100% - 50px) !important;
+    cursor: pointer;
+}
+
+/* use !important to override jquery ui values*/
+.vas-slider-handle{
+    width: 3em !important;
+    height: 1.6em !important;
+    top: 50% !important;
+    margin-left: -1.5em !important;
+    margin-top: -.8em !important;
+    text-align: center !important;
+    line-height: 1.6em !important;
+    cursor: pointer !important;
+}
+
+.slider-visible{
+    display: block;
+}
+
+
+div.vas-radios td span.pl-2{
+    padding-left: 0 !important;
+}
+
+/* slider in disabled (read-only) view */
+.ui-state-disabled,.ui-widget-content .ui-state-disabled,.ui-widget-header .ui-state-disabled{
+    opacity: 1;
+    filter: Alpha(Opacity=100);
+}
+
+/* slider in true disabled view */
+.custom-slider-disabled{
+    opacity: 0.5;
+    filter: Alpha(Opacity=50);
+}
+
+/* slider transformation into radios threshold */
+@media screen and (min-width: 990px){
+    .vas-radios{
+        display: block;
+    }
+    .vas-slider{
+        display: none;
+    }
+}

@@ -1,0 +1,74 @@
+.crf-row{
+    margin: 0;
+    border-top: 1px solid #ccc;
+}
+
+.crf-row-blank{
+    margin: 0;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+.crf-row-intro{
+    margin: 0;
+    min-height: 50px;
+}
+
+.movingradio-button{
+    box-sizing: border-box;
+    width: 50px;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+}
+
+.movingradio-label{
+    box-sizing: border-box;
+    width: calc(100% - 50px); 
+    float: left;
+    text-align: left;
+    padding-bottom: 25px;
+    padding-top: 10px;
+    word-wrap: break-word;
+}
+
+@media screen and (min-width: 768px) {
+    
+    .movingradio-button{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .movingradio-label{
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 15px;
+    }    
+    
+/*    .col-md-9, .col-md-3, .col-md-2, .col-md-1, .col-md-4, .col-md-12{
+        padding-left: 0;
+        padding-right: 0;
+    }*/
+    
+    .col-md-9{
+        min-height: 50px;
+    }
+        
+    .top-row-label{
+        background-color: transparent;
+    }    
+}
+
+@media screen and (max-width: 768px){
+    
+    .jumbotron{
+        padding: 0;
+    }    
+    
+/*    .col-md-6, .col-md-9, .col-md-3, .col-md-12{
+        padding-left: 0;
+        padding-right: 0;
+    }*/
+}

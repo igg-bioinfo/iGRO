@@ -1,0 +1,28 @@
+.radio_container {
+    padding-left: 50px;
+    padding-top: 5px;
+}
+
+.cb_container {
+    padding-left: 50px;
+    padding-top: 5px;
+}
+
+.table td {
+    border-top: none;
+}
+
+.table th {
+    border-top: none;
+}
+
+.uveitis_radio {
+    margin-left:10px; 
+    padding-left:30px; 
+    padding-right:10px;
+}
+
+.uveitis_text {
+    display:inline; 
+    width:150px;
+}

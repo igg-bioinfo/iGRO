@@ -1,0 +1,10 @@
+/* used in sorting by status */
+.summary-font-invisible{
+    color: transparent;
+}
+
+/* used to assign error code to icons */
+.summary-status.invalid-feedback{
+    display: inline;
+    font-size: 2em;
+}

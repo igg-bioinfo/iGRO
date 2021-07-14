@@ -1,0 +1,5 @@
+class/Config.php
+docs/
+.htaccess
+.vscode/
+test.php

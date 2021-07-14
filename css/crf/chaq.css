@@ -1,0 +1,28 @@
+.chaq-faces-table{
+    width: 100%;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    border: 0;
+}
+
+.face-img-left{
+    width: 55px;
+    text-align: left;
+}
+
+.face-img-right{
+    width: 55px;
+    text-align: right;
+}
+
+.face-label-left{
+    width: 50%;
+    text-align: left;
+    font-weight: bold;
+}
+
+.face-label-right{
+    width: 50%;
+    text-align: right;
+    font-weight: bold;
+}

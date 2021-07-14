@@ -1,0 +1,21 @@
+.table_jadi {
+    width: 100%
+}
+
+.th_description {
+    width: 20%
+}
+
+.th_score {
+    text-align: center;
+}
+
+.span_score {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.td_score {
+    padding: 5px;
+}
+

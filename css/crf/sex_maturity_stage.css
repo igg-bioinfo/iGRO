@@ -1,0 +1,15 @@
+.smr_header {
+    font-weight: bold;
+    height: 50px;
+}
+
+.smr_row {
+    height: 50px;
+    margin: auto;
+}
+
+.smr_row_inline {
+    height: 50px;
+    display: flex;
+    margin: auto;
+}

@@ -1,0 +1,26 @@
+.preg-bold{
+    font-weight: bold;
+}
+
+.preg-bottom{
+    margin-bottom: 7px;
+}
+
+.preg-gest-age-unknown{
+    margin-top: -17px;
+    margin-left: 0;
+}
+
+.preg-live-birth-indentation{
+    margin-left: 60px;
+}
+
+@media screen and (min-width: 992px){
+    .preg-gest-age-unknown{
+        margin-top: -17px;
+        margin-left: 12px
+    }   
+    .preg-live-birth-indentation{
+        margin-left: 0;
+    }
+}

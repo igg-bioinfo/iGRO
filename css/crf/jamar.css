@@ -1,0 +1,439 @@
+.crf-row{
+    margin: 0;
+    border-top: 1px solid #ccc;
+}
+
+.crf-row-blank{
+    margin: 0;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.crf-row-upper, .crf-row-intro{
+    border-top: 1px solid black;
+    margin: 0;
+    min-height: 50px;
+}
+
+.crf-row-lower{
+    border-bottom: 1px solid #ccc;
+}
+
+.crf-row-noborder{
+    margin: 0;
+}
+
+.crf-row-indent{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.q0-left{
+    text-align: left;
+    font-weight: bold;
+}
+
+.q0-right{
+    text-align: left;
+    font-weight: bold;
+}
+
+.q0-intro{
+    padding: 5px;
+}
+
+.q0-line1{
+    padding: 5px 0 5px 5px !important;
+}
+
+.q0-line2{
+    padding: 5px 0 5px 5px !important;
+}
+
+.q0-line3{
+    padding: 5px 5px 5px 5px !important;
+}
+
+.q0-line4{
+    padding: 5px 0 0 5px !important;
+    margin-right: 0;
+}
+
+.q0-line5{
+    padding: 5px 0 0 5px !important;
+    margin-right: 0;
+}
+
+.q0-line7{
+    padding: 5px 0 0 5px !important;
+    margin-right: 0;
+}
+
+.q0-line8{
+    padding: 5px 0 0 5px !important;
+}
+
+.q1-header{
+    width: 100%;
+}
+
+.q1-intro{
+    width: 100%;
+}
+
+.radio5-cell, .radio5-label{
+    width: 20%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-align: center;
+    height: 50px;
+    word-wrap: break-word;
+}
+
+.radio4-cell, .radio4-label{
+    width: 25%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-align: center;
+    height: 50px;
+    word-wrap: break-word;
+}
+
+.radio5-label, .radio4-label{
+    height: 100%;
+    border-right: 1px solid #ddd;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.radio5-label-rightmost{
+    border-right: 0;
+}
+
+.radio5-input, .radio4-input{
+    top: 30%;
+    transform: translateY(-30%);
+    position: relative;
+}
+
+.q3-table-row{
+    width: 50%;
+    border-top: 1px solid #ccc;
+    padding-left: 5px;
+}
+
+.table-twoside-border{
+    border-right: 1px solid #ccc;
+}
+
+.table-twoside-border-top{
+    padding-right: 0;
+}
+
+.table-twoside-border-bottom{
+    padding-left: 0;
+}
+
+.q3-table-row-centered{
+    width: 50%;
+    text-align: center;
+    height: 50px;
+    vertical-align: middle;
+    border-top: 1px solid #ccc;
+}
+
+.q3-table-row-toleft{
+    text-align: left;
+}
+
+.q3-bottom-table{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.q3-bottom-table-nojoints{
+    width: calc(100% - 30px);
+    margin: 0 auto;
+}
+
+.q-table-row-left{
+    width: 80%;
+    text-align: left;
+    height: 55px;
+    border-top: 1px solid #ccc;
+    padding-left: 5px;
+}
+
+.q-table-row-right{
+    width: 20%;
+    text-align: center;
+    height: 55px;
+    border-top: 1px solid #ccc;
+}
+
+.q-yesno-choice{
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    text-align: center;
+    height: 100%;
+}
+
+.q-yesno-choice-border, .add-border-bottom{
+    border-bottom: 1px #ccc solid;
+}
+
+.q-yesno-radio{
+    top: 40%;
+    transform: translateY(-40%);
+    position: relative;
+    word-wrap: break-word;
+}
+
+.movingradio-button{
+    box-sizing: border-box;
+    width: 50px;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+}
+
+.movingradio-label{
+    box-sizing: border-box;
+    width: calc(100% - 50px);
+    float: left;
+    text-align: left;
+    padding-bottom: 25px;
+    padding-top: 10px;
+    word-wrap: break-word;
+}
+
+.between-row-div{
+    display: none;
+    border: 0;
+}
+
+.between-row-label, .top-row-label{
+    background-color: #ccc;
+}
+
+.bold-label{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.q10-table{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+}
+
+.q10-div{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0;
+}
+
+.q-5radio-div, .q-4radio-div{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.q-div-vert-centered{
+    top: 40%;
+    transform: translateY(-40%);
+    position: relative;
+}
+
+.input-text-other{
+    width: 60%;
+    display: none;
+}
+
+.input-text-other-show{
+    width: 60%;
+}
+
+.jamar-faces-table{
+    width: 100%;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    border: 0;
+}
+
+.face-img-left{
+    width: 55px;
+    text-align: left;
+}
+
+.face-img-right{
+    width: 55px;
+    text-align: right;
+}
+
+.face-label-left{
+    width: 50%;
+    text-align: left;
+    font-weight: bold;
+}
+
+.face-label-right{
+    width: 50%;
+    text-align: right;
+    font-weight: bold;
+}
+
+.ok-error-icon{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+.container-basic{
+    padding-left: 35px;
+}
+
+.jamar_not_required{
+    border: 1px transparent solid;
+    display: block;
+    font-size: 1rem;
+}
+
+div.alert.alert-light{
+    margin-bottom: 0 !important;
+}
+
+div.radio5-input span.pl-2, div.movingradio-button span.pl-2{
+    padding-left: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+
+    .q0-right{
+        text-align: right;
+    }
+
+    .movingradio-button{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .movingradio-label{
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+
+    .col-md-9, .col-md-3, .col-md-2, .col-md-1, .col-md-4, .col-md-12{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .col-md-9{
+        min-height: 50px;
+    }
+
+    .bold-label{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .top-row-label{
+        background-color: transparent;
+    }
+}
+
+/* 767px as width 768px is bootstrap break-point and it already uses different settings */
+
+@media screen and (max-width: 767px){
+
+    .jumbotron{
+        padding: 0;
+    }
+
+    .container-fluid{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .col-md-6, .col-md-9, .col-md-3, .col-md-12{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .between-row-div{
+        display: flex;
+        width: 100%;
+    }
+
+    .table-twoside-border{
+        border-right: 0;
+    }
+
+    .q-yesno-choice{
+        min-height: 50px;
+    }
+
+    .q-yesno-choice-left{
+        padding-left: 20%;
+    }
+
+    .q-yesno-choice-right{
+        padding-right: 20%;
+    }
+
+    .add-border-bottom{
+        border-bottom: 0;
+    }
+
+    .q3-bottom-table{
+        width: 100%;
+    }
+
+    .q3-bottom-table-nojoints{
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .q3-table-row-toleft{
+        text-align: center;
+    }
+
+    .crf-row-indent{
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .top-label-div{
+        border: 0;
+    }
+
+    .crf-row-lower{
+        border-bottom: 0;
+        padding-top: 10px;
+        padding-bottom: 15px;
+    }
+
+    #title_page{
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width: 990px){
+    .jamar-faces-table{
+        font-size: 1rem;
+    }
+}
+

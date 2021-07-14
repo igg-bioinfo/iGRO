@@ -1,0 +1,144 @@
+/* Customize the label (the container) */
+.cb_container {
+    display: inline;
+    position: relative;
+    padding-left: 25px;
+    padding-bottom: 12px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.cb_container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #ccc;
+}
+
+/* On mouse-over, add a grey background color */
+.cb_container:hover input ~ .checkmark {
+    background-color: #eee;
+}
+
+/* When the checkbox is checked, add a blue background */
+.cb_container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.cb_container input:disabled ~ .checkmark {
+    cursor: not-allowed;
+    opacity: 0.4;
+    background-color: #ccc;
+}
+
+.cb_container input:disabled:checked ~ .checkmark {
+    cursor: not-allowed;
+    opacity: 0.4;
+    background-color: #2196F3;
+}
+
+.cb_container input:disabled ~ .checkmark:after {
+    left: 9px;
+    top: 6px;
+    width: 7px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Show the checkmark when checked */
+.cb_container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.cb_container .checkmark:after {
+    left: 9px;
+    top: 6px;
+    width: 7px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    white-space: nowrap;
+    padding-left: 70px !important;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+input:disabled + .slider {
+    cursor: not-allowed;
+    opacity: 0.4;
+    background-color: #ccc;
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+    width: 60px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
