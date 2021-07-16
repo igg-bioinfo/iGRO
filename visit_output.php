@@ -36,8 +36,8 @@ if (class_exists($class_output)) {
 //        }
 
 //-------------------------NEED CHECK
-$is_check = $oOutput->need_check && !$oVisit->is_check;
-$oOutput->calculate(!$is_check);
+$is_temp_text = $oOutput->need_check && !$oVisit->is_check;
+$oOutput->calculate(!$is_temp_text);
 
 
 
@@ -46,7 +46,7 @@ $oOutput->calculate(!$is_check);
 //        $oOutput->save();
 //-------------------------TITLE & OUTPUT HTML
 if ($oOutput->result != '') {
-    $output_title = $oVisit->type;
+    $output_title = $oVisit->type_text;
     $output_html .= HTML::set_paragraph($output_title, ' background-color: #' . $oArea->color_background);
 }
 $output_html .= $oOutput->result;
@@ -58,7 +58,7 @@ $html .= HTML::BR;
 
 //--------------------------------------HTML
 HTML::$title = Language::find('output');
-HTML::$title .= '<br>' . Date::default_to_screen($oVisit->date) . ' - ' . $oVisit->type;
+HTML::$title .= '<br>' . Date::default_to_screen($oVisit->date) . ' - ' . $oVisit->type_text;
 URL::changeable_var_add('pid', $oPatient->id);
 URL::changeable_var_add('vid', $oVisit->id);
 $html .= HTML::set_button(Icon::set_back() . Language::find('visit'), '', URL::create_url('visit_index'), '', 'float:left;');

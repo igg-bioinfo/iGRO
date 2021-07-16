@@ -110,7 +110,7 @@ class Menu {
 
     protected function set_menu_visit() {
         URL::changeable_vars_reset_except(['pid', 'vid']);
-        $this->add_menu_main(self::MENU_VISIT, $this->oVisit->type);
+        $this->add_menu_main(self::MENU_VISIT, $this->oVisit->type_text);
         $this->add_menu(URL::create_url("visit_index", $this->oArea->url, true), Language::find('forms'), self::MENU_VISIT);
         $oMenuFrms = Form::get_all_by_visit_type($this->oVisit->type_id, $this->oPatient->id, $this->oVisit->id);
         if ($this->oVisit->has_output) {

@@ -41,7 +41,7 @@ function send_confirmation() {
     $subject = "Data confirmed for subject " . $oPatient->patient_id;
     $message = "Dear Staff," . HTML::BR . HTML::BR;
     $message .= "Subject " . $oPatient->patient_id . " data has just been confirmed for visit "
-        .Date::default_to_screen($oVisit->date) . " (".$oVisit->type.")." . HTML::BR . HTML::BR;
+        .Date::default_to_screen($oVisit->date) . " (".$oVisit->type_text.")." . HTML::BR . HTML::BR;
     $message .= "Data confirmed by: " . $oUser->name . " " . $oUser->surname . HTML::BR;
     $message .= "Administrator (AUTOMATED EMAIL)";
     $oMailer = new Mailer();
@@ -63,6 +63,7 @@ function send_output_checked($oOutput, $oRecipients) {
 function get_oOutput($oVis) {
     $oOutput = NULL;
     $class_output = 'Output_' . $oVis->type;
+    echo $class_output;
     if (class_exists($class_output)) {
         $oOutput = new $class_output($oVis);
     }
@@ -141,7 +142,7 @@ if ($post_save == SAVE_LOCK) {
 //--------------------------------PATIENT DETAILS
 $trs = '';
 $trs .= set_table_title(strtoupper(Language::find('details')), 4);
-$trs .= set_row_4cell(Language::find('patient_code'), $oPatient->patient_id, Language::find('visit'), $oVisit->type.' - '.Date::default_to_screen($oVisit->date));
+$trs .= set_row_4cell(Language::find('patient_code'), $oPatient->patient_id, Language::find('visit'), $oVisit->type_text.' - '.Date::default_to_screen($oVisit->date));
 if ($is_admin) {
     $trs .= set_row_4cell('ID '.Language::find('patient'), $oPatient->id, 'ID '.Language::find('visit'), $oVisit->id);
 } else {
@@ -224,12 +225,12 @@ if (!$is_completed) {
             else {
                 if ($oVisit->has_output && isset($oOutput) && $oOutput->need_check) {
                     $subj = strtoupper(Language::find('patient')." " . $oPatient->patient_id 
-                        . " - " . $oVisit->type . " " .Date::default_to_screen($oVisit->date). " - ".Language::find('output'));
+                        . " - " . $oVisit->type_text . " " .Date::default_to_screen($oVisit->date). " - ".Language::find('output'));
                     $output_subj = Form_input::createInputText('output_subj', Language::find('object'), $subj, 12, true, '', 300);
                     $trs .= HTML::set_tr(HTML::set_td($output_subj));
     
                     $msg = Mailer::get_msg_output();
-                    $msg = str_replace(Mailer::VAR_VISIT_TYPE, $oVisit->type.' ('.$oVisit->type_code.')', $msg);
+                    $msg = str_replace(Mailer::VAR_VISIT_TYPE, $oVisit->type_text.' - '.$oVisit->type_code, $msg);
                     $msg = str_replace(Mailer::VAR_DATE, Date::default_to_screen($oVisit->date), $msg);
                     $msg = str_replace(Mailer::VAR_PTCODE, $oPatient->patient_id, $msg);
                     $output_msg = Form_input::createTextEditor('output_msg', Language::find('body'), $msg, 12, 200, true, '');
@@ -273,5 +274,5 @@ URL::changeable_var_add('pid', $oPatient->id);
 
 //--------------------------------------HTML
 HTML::$title = Language::find('confirm_group') . '<br>';
-HTML::$title .= $oVisit->type.' ' . Date::default_to_screen($oVisit->date);
+HTML::$title .= $oVisit->type_text.' ' . Date::default_to_screen($oVisit->date);
 HTML::print_html($html);

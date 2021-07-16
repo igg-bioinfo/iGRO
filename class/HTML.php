@@ -218,7 +218,7 @@ class HTML {
 
             self::$visit_block .= '<div class="row" style="' . $style_row . '">';
             self::$visit_block .= '<div class="col-sm-4" style="' . $style_cell . '">';
-            self::$visit_block .= Language::find('visit').': <b style="white-space: nowrap;">' . $oVisit->type . '</b>';
+            self::$visit_block .= Language::find('visit').': <b style="white-space: nowrap;">' . $oVisit->type_text . '</b>';
             self::$visit_block .= '</div>';
             self::$visit_block .= '<div class="col-sm-4" style="' . $style_cell . '">';
             self::$visit_block .= Language::find('date').': <b style="white-space: nowrap;">' . Date::default_to_screen($oVisit->date) . '</b>';

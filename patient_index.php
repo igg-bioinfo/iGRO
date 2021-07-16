@@ -43,10 +43,9 @@ $bootstrap_rows .= HTML::set_row(
     HTML::set_bootstrap_nested_cell(Language::find('ethnicity'), HTML::set_row(
         HTML::set_bootstrap_cell($oPatient->ethnicity_other.'' != '' ? $oPatient->ethnicity_other : Ethnicity::get_text($oPatient->ethnicity), 12)), 4, true, 'border')
 );
-$gender = $oPatient->gender.'' === '1' ? Language::find('male') : ($oPatient->gender.'' === '2'? Language::find('female') : Language::find('unknown'));
 $bootstrap_rows .= HTML::set_row(
     HTML::set_bootstrap_nested_cell(Language::find('sex'), HTML::set_row(
-        HTML::set_bootstrap_cell($gender, 12)), 4, true, 'border') .
+        HTML::set_bootstrap_cell($oPatient->get_gender_text(), 12)), 4, true, 'border') .
     HTML::set_bootstrap_nested_cell(Language::find('date_birth'), HTML::set_row(
         HTML::set_bootstrap_cell(($oArea->id == Area::$ID_INVESTIGATOR ? Date::default_to_screen($oPatient->date_birth) : 'Encrypted'), 12)), 4, true, 'border') .
     HTML::set_bootstrap_nested_cell(Language::find('date_diagnosis'), 

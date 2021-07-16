@@ -30,7 +30,7 @@ if (Security::sanitize(INPUT_POST, 'unlock_mail_send') != '') {
     $subject = "Unlock data request for subject " . $oPatient->patient_id;
     $message = "Dear Staff," . HTML::BR . HTML::BR;
     $message .= "We need to unlock data for subject " . $oPatient->patient_id . " - visit "
-        .Date::default_to_screen($oVisit->date) . " (".$oVisit->type.")." . HTML::BR;
+        .Date::default_to_screen($oVisit->date) . " (".$oVisit->type_text.")." . HTML::BR;
     $message .= "Please complete it at your earliest convenience. " . HTML::BR . HTML::BR;
     $message .= "Request done by: " . $oUser->name . " " . $oUser->surname . HTML::BR;
     $message .= "Administrator (AUTOMATED EMAIL)";
@@ -137,5 +137,5 @@ URL::changeable_var_add('pid', $oPatient->id);
 $html .= HTML::set_button(Icon::set_back().$oPatient->patient_id.' '.Language::find('visits'), '', URL::create_url('visits'));
 $html .= HTML::set_spaces(2);
 HTML::$title = Language::find('forms');
-HTML::$title .= '<br>' . Date::default_to_screen($oVisit->date) . ' - ' . $oVisit->type;
+HTML::$title .= '<br>' . Date::default_to_screen($oVisit->date) . ' - ' . $oVisit->type_text;
 HTML::print_html($html);

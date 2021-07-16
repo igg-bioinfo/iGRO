@@ -1,8 +1,10 @@
 <?php
 
 class Output {
-
+    //OVERRIDABLE VARIABLES
     public $need_check = false;
+
+    //VARIABLES
     public $id = 0;
     public $oVisit = NULL;
     public $oScores = [];
@@ -17,48 +19,51 @@ class Output {
 
     protected $extra_fields = [];
     protected $extra_field_inputs = [];
-
-    const EOS_NO = 1;
-    const EOS_CR = 2;
-    const EOS_FAILURE = 3;
-    const EOS_DROPPED = 4;
-    const FAIL_AE = [0 => 5, 1 => 'Adverse event'];
+    const EOS_NO = [0 => 1, 1 => 'no'];
+    const EOS_CR = [0 => 2, 1 => 'Clinical remission'];
+    const EOS_FAILURE = [0 => 3, 1 => 'treatment_failure'];
+    const EOS_DROPPED = [0 => 4, 1 => 'dropped_out'];
+    const FAIL_AE = [0 => 5, 1 => 'adverse_events'];
     const FAIL_PHYSICIAN = [0 => 6, 1 => 'Physician decision'];
     const FAIL_PATIENT = [0 => 7, 1 => 'Patient decision'];
     const FAIL_BAD_RESPONSE = [0 => 8, 1 => 'Insufficient clinical response'];
     const FAIL_ERROR_NOAE = [0 => 9, 1 => 'Medication error without AE'];
-    const FAIL_NEW_ENROLL = [0 => 10, 1 => 'Enrollment in other clinical study '];
+    const FAIL_NEW_ENROLL = [0 => 10, 1 => 'other_trials'];
     const FAIL_MAJOR_CHANGE = [0 => 11, 1 => 'Major change in treatment'];
-    const FAIL_ARRAY = [self::FAIL_MAJOR_CHANGE, self::FAIL_AE, self::FAIL_PHYSICIAN,
-        self::FAIL_PATIENT, self::FAIL_BAD_RESPONSE, self::FAIL_ERROR_NOAE, self::FAIL_NEW_ENROLL];
 
-    const VALUE_NA = 99;
+    const VALUE_NA = [0 => 99, 1 => 'not_applicable'];
+    public static $eos_array = [];
 
-    public static function get_eos_text($eos) {
-        switch ($eos) {
-            case self::EOS_NO:
-                return 'No';
-            case self::EOS_CR:
-                return 'CR';
-            case self::EOS_FAILURE:
-                return 'Treatment failure';
-            case self::EOS_DROPPED:
-                return 'Dropped out';
-            case self::VALUE_NA:
-                return '<b>NA</b>';
-        }
-        return self::get_fail_text($eos);
+    private static function translate($array) {
+        return [$array[0], Language::find($array[1])];
+    }
+    public static function set_eos_array() {
+        Language::add_area('patient');
+        Language::add_area('patient_criteria');
+        self::$eos_array[] = self::translate(self::EOS_NO);
+        self::$eos_array[] = self::translate(self::EOS_CR);
+        self::$eos_array[] = self::translate(self::EOS_FAILURE);
+        self::$eos_array[] = self::translate(self::EOS_DROPPED);
+
+        self::$eos_array[] = self::translate(self::FAIL_MAJOR_CHANGE);
+        self::$eos_array[] = self::translate(self::FAIL_AE);
+        self::$eos_array[] = self::translate(self::FAIL_PHYSICIAN);
+        self::$eos_array[] = self::translate(self::FAIL_PATIENT);
+        self::$eos_array[] = self::translate(self::FAIL_BAD_RESPONSE);
+        self::$eos_array[] = self::translate(self::FAIL_ERROR_NOAE);
+        self::$eos_array[] = self::translate(self::FAIL_NEW_ENROLL);
+
     }
 
     public static function get_fail_text($id) {
         $text = '';
-        foreach(self::FAIL_ARRAY as $fail) {
+        foreach(self::$eos_array as $fail) {
             if ($id.'' == $fail[0].'') {
                 $text = $fail[1];
                 break;
             }
         }
-        return $text;
+        return $text == '' ? Language::find(self::VALUE_NA[1]) : $text;
     }
 
 //-----------------------------------------------------OVERRIDABLE METHODS-----------------------------------------------------
@@ -80,7 +85,7 @@ class Output {
             $id = self::POST_PREFIX . $field;
             $is_view = false;
             $value = $this->{$field};
-            $html .= Form_input::createSelect($id, $label, $this->{$field . '_array'}, $value, 2, $is_view, "check_select('" . $id . "');");
+            $html .= Form_input::createSelect($id, $label, self::${$field . '_array'}, $value, 2, $is_view, "check_select('" . $id . "');");
         }
         if ($html . '' != '') {
             $html = '<div class="row col-xs-12">' . $html . '</div>';
@@ -90,6 +95,7 @@ class Output {
 
 //-----------------------------------------------------PUBLIC-----------------------------------------------------
     public function __construct($oVisit = NULL) {
+        self::set_eos_array();
         $this->init();
         foreach ($this->extra_fields as $extra_field) {
             $this->{$extra_field} = NULL;
@@ -135,7 +141,7 @@ class Output {
             $this->ludati = $row['ludati'];
             $extra_obj = json_decode($row['extra_fields']);
             foreach ($this->extra_fields as $extra_field) {
-                $this->{$extra_field} = property_exists($extra_obj, $extra_field) && isset($extra_obj->extra_field) ? (int) $extra_obj->extra_field : NULL;
+                $this->{$extra_field} = isset($extra_obj->{$extra_field}) ? (int) $extra_obj->{$extra_field} : NULL;
             }
         }
     }
@@ -171,14 +177,14 @@ class Output {
         $class_rand = 'Randomization_' . $this->oVisit->type;
         if (class_exists($class_rand)) {
             $this->oRandomization = new $class_rand($this->oVisit);
-            $this->oRandomization->get();
-            $this->oRandomization->set();
+            $this->oRandomization->get(true);
+            $this->oRandomization->update();
         }
     }
 
 //-----------------------------------------------------PROTECTED-----------------------------------------------------
     protected function get_label($value, $type) {
-        foreach ($this->{$type . '_array'} as $element) {
+        foreach (self::${$type . '_array'} as $element) {
             if ($element[0] . '' == $value . '') {
                 return $element[1];
             }
@@ -200,7 +206,7 @@ class Output {
             $html .= $this->get_oScore_text($oScore);
         }
         if (count($this->oScores) == 0) {
-            $html .= 'No score has been evaluated at this visit for ' . Config::TITLE . HTML::BR;
+            $html .= 'No score has been evaluated at this visit for ' . HTML::BR;
         } else {
             $this->has_output = true;
         }

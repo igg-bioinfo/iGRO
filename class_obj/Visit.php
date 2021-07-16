@@ -71,7 +71,8 @@ class Visit {
 
         $this->type_id = isset($visit["visit_type_id"]) ? $visit["visit_type_id"] : NULL;
         $this->type_code = isset($visit["visit_type_code"]) ? $visit["visit_type_code"] : NULL;
-        $this->type = isset($visit["visit_type"]) ? Language::find($visit["visit_type"]) : NULL;
+        $this->type = isset($visit["visit_type"]) ? $visit["visit_type"] : NULL;
+        $this->type_text = isset($visit["visit_type"]) ? Language::find($visit["visit_type"]) : NULL;
         $this->always_show = $visit["always_show"] . '' == '1';
         $this->is_extra = $visit["is_extra"] . '' == '1';
         $this->has_output = $visit["has_output"] . '' == '1';

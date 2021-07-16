@@ -55,7 +55,6 @@ INSERT INTO language_translation (label_text, languageiso, area_text, translatio
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'patient_diagnosis', 'en', 'patient', 'The subject is affected by <b>%%%</b> ';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'patient_new', 'it', 'patient', 'Nuovo paziente';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'patient_new', 'en', 'patient', 'New subject';
-END;
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'end_form', 'en', 'patient', 'Discontinuation form';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'end_form', 'it', 'patient', 'Scheda di uscita dallo studio';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'end_reason', 'en', 'patient', 'Reason of discontinuation';
@@ -74,3 +73,4 @@ INSERT INTO language_translation (label_text, languageiso, area_text, translatio
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'ea_major', 'it', 'patient', 'Comparsa di eventi avversi maggiori';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'treatment_failure', 'it', 'patient', 'Non aderenza alla terapia';
 
+END;

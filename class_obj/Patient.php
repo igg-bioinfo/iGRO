@@ -316,5 +316,9 @@ class Patient {
         return $this->visits > $this->visits_confirmed;
     }
 
+    function get_gender_text() {
+        return $this->gender.'' === '1' ? Language::find('male') : ($this->gender.'' === '2'? Language::find('female') : Language::find('unknown'));
+    }
+
 
 }
