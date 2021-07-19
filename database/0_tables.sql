@@ -1,3 +1,4 @@
+BEGIN NOT ATOMIC
 CREATE TABLE `area` (
   `id_area` bigint(20) NOT NULL AUTO_INCREMENT,
   `area_name` varchar(50) NOT NULL,
@@ -6,7 +7,7 @@ CREATE TABLE `area` (
   `color_background` varchar(6) NOT NULL,
   PRIMARY KEY (`id_area`),
   KEY `area_id_area_IDX` (`id_area`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `center` (
   `id_center` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -16,14 +17,14 @@ CREATE TABLE `center` (
   `center_sha_pw` text NOT NULL,
   PRIMARY KEY (`id_center`),
   KEY `center_id_center_IDX` (`id_center`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `country` (
   `country_code` varchar(6) NOT NULL,
   `country` varchar(150) NOT NULL,
   PRIMARY KEY (`country_code`),
   KEY `country_country_code_IDX` (`country_code`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `country_other` (
   `id_contry_other` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -32,7 +33,7 @@ CREATE TABLE `country_other` (
   `country_other_desc` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id_contry_other`),
   KEY `country_other_id_contry_other_IDX` (`id_contry_other`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `diagnosis` (
   `id_dia` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -42,7 +43,7 @@ CREATE TABLE `diagnosis` (
   `orderby` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_dia`),
   KEY `NewTable_id_dia_IDX` (`id_dia`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `error_log` (
   `id_error` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -57,7 +58,7 @@ CREATE TABLE `error_log` (
   `ludati` datetime NOT NULL,
   PRIMARY KEY (`id_error`),
   KEY `error_log_id_error_IDX` (`id_error`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1454 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `field` (
   `field_id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -70,7 +71,7 @@ CREATE TABLE `field` (
   `is_extra_field` smallint(6) NOT NULL DEFAULT 0,
   PRIMARY KEY (`field_id`),
   KEY `Field_field_id_IDX` (`field_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `field_form` (
   `form_id` bigint(20) NOT NULL,
@@ -80,7 +81,7 @@ CREATE TABLE `field_form` (
   `required` smallint(6) NOT NULL DEFAULT 1,
   PRIMARY KEY (`form_id`,`field_id`),
   KEY `field_form_form_id_IDX` (`form_id`,`field_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `form` (
   `form_id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -90,7 +91,7 @@ CREATE TABLE `form` (
   `is_visit_related` smallint(6) NOT NULL DEFAULT 1,
   PRIMARY KEY (`form_id`),
   KEY `form_form_id_IDX` (`form_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `form_status` (
   `form_id` bigint(20) NOT NULL,
@@ -102,7 +103,7 @@ CREATE TABLE `form_status` (
   `ludati` datetime NOT NULL,
   PRIMARY KEY (`form_id`,`id_paz`,`id_visita`),
   KEY `form_status_form_id_IDX` (`form_id`,`id_paz`,`id_visita`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `form_visit_type` (
   `form_id` bigint(20) NOT NULL,
@@ -113,7 +114,7 @@ CREATE TABLE `form_visit_type` (
   `dependencies` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`form_id`,`visit_type_id`),
   KEY `form_visit_type_form_id_IDX` (`form_id`,`visit_type_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `language` (
   `id_language` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -124,7 +125,7 @@ CREATE TABLE `language` (
   `is_right` smallint(6) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_language`),
   KEY `language_id_language_IDX` (`id_language`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `language_translation` (
   `id_translation` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -134,7 +135,7 @@ CREATE TABLE `language_translation` (
   `translation` text DEFAULT NULL,
   PRIMARY KEY (`id_translation`),
   KEY `language_translation_id_translation_IDX` (`id_translation`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=586 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `mail_archive` (
   `id_mail` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -146,7 +147,7 @@ CREATE TABLE `mail_archive` (
   `ludati` datetime NOT NULL,
   PRIMARY KEY (`id_mail`),
   KEY `mail_archive_id_mail_IDX` (`id_mail`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `page_template` (
   `id_template` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -156,7 +157,7 @@ CREATE TABLE `page_template` (
   `need_login` smallint(6) NOT NULL,
   PRIMARY KEY (`id_template`),
   KEY `page_template_id_template_IDX` (`id_template`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `patient` (
   `id_paz` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -188,7 +189,7 @@ CREATE TABLE `patient` (
   `end_note` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id_paz`),
   KEY `patient_id_paz_IDX` (`id_paz`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `patient_criteria` (
   `id_paz` bigint(20) NOT NULL,
@@ -197,7 +198,7 @@ CREATE TABLE `patient_criteria` (
   `ludati` datetime NOT NULL,
   `extra_fields` text DEFAULT NULL,
   PRIMARY KEY (`id_paz`,`criteria_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `patient_deleted` (
   `id_paz` bigint(20) NOT NULL,
@@ -205,7 +206,7 @@ CREATE TABLE `patient_deleted` (
   `patient_json` text NOT NULL,
   `author` bigint(20) NOT NULL,
   `ludati` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `session` (
   `id_area` bigint(20) NOT NULL,
@@ -216,7 +217,7 @@ CREATE TABLE `session` (
   `last_seen` datetime DEFAULT NULL,
   PRIMARY KEY (`id_area`,`id_user`,`ip_address`),
   KEY `session_id_area_IDX` (`id_area`,`id_user`,`ip_address`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `session_archive` (
   `id_session` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -227,7 +228,7 @@ CREATE TABLE `session_archive` (
   `date_logout` datetime DEFAULT NULL,
   PRIMARY KEY (`id_session`),
   KEY `session_id_session_IDX` (`id_session`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `session_fail` (
   `id_fail` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -239,7 +240,7 @@ CREATE TABLE `session_fail` (
   `ludati` datetime NOT NULL,
   PRIMARY KEY (`id_fail`),
   KEY `session_fail_id_fail_IDX` (`id_fail`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `user` (
   `id_user` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -254,7 +255,7 @@ CREATE TABLE `user` (
   `pswdate` datetime DEFAULT NULL,
   PRIMARY KEY (`id_user`),
   KEY `contact_id_med_IDX` (`id_user`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `visit` (
   `id_visita` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -277,7 +278,7 @@ CREATE TABLE `visit` (
   `lock_reason` text DEFAULT NULL,
   PRIMARY KEY (`id_visita`),
   KEY `visit_id_visita_IDX` (`id_visita`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `visit_deleted` (
   `id_visita` bigint(20) NOT NULL,
@@ -285,7 +286,7 @@ CREATE TABLE `visit_deleted` (
   `visit_json` text NOT NULL,
   `author` bigint(20) NOT NULL,
   `ludati` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `visit_output` (
   `id_output` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -297,7 +298,7 @@ CREATE TABLE `visit_output` (
   `ludati` datetime NOT NULL,
   PRIMARY KEY (`id_output`),
   KEY `visit_output_id_output_IDX` (`id_output`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `visit_type` (
   `visit_type_id` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -312,7 +313,7 @@ CREATE TABLE `visit_type` (
   `has_randomization` smallint(6) NOT NULL DEFAULT 0,
   PRIMARY KEY (`visit_type_id`),
   KEY `visit_type_visit_type_id_IDX` (`visit_type_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `visit_randomization` (
   `id_visita` bigint(20) DEFAULT NULL,
@@ -324,4 +325,6 @@ CREATE TABLE `visit_randomization` (
   `id_paz` bigint(20) NOT NULL,
   PRIMARY KEY (`id_random`),
   KEY `visit_randomization_id_random_IDX` (`id_random`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+END;

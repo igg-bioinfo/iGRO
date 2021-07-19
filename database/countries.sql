@@ -55,7 +55,6 @@ INSERT INTO country (country_code, country) VALUES('CV', 'Cabo Verde');
 INSERT INTO country (country_code, country) VALUES('CW', 'Curaçao');
 INSERT INTO country (country_code, country) VALUES('CX', 'Christmas Isds');
 INSERT INTO country (country_code, country) VALUES('CY', 'Cyprus');
-INSERT INTO country (country_code, country) VALUES('CZ', 'Czechia');
 INSERT INTO country (country_code, country) VALUES('DE', 'Germany');
 INSERT INTO country (country_code, country) VALUES('DJ', 'Djibouti');
 INSERT INTO country (country_code, country) VALUES('DK', 'Denmark');

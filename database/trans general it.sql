@@ -74,8 +74,8 @@ INSERT INTO language_translation (label_text,languageiso,area_text,`translation`
 	 ('often','it','general','Spesso'),
 	 ('always','it','general','Sempre'),
 	 ('good','it','general','Buono');
-INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'patient_index', 'en', 'general', 'Riepilogo dati'; 
-INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'patient_census', 'en', 'general', 'Dati del paziente'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'patient_index', 'it', 'general', 'Riepilogo dati'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'patient_census', 'it', 'general', 'Dati del paziente'; 
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'tools', 'it', 'general', 'Strumenti'; 
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'last_update', 'it', 'general', 'Ulitmo aggiornamento da parte di %%%, il $$$'; 
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'diagnosis', 'it', 'general', 'Diagnosi';

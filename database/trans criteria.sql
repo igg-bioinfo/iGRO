@@ -12,5 +12,5 @@ INSERT INTO language_translation (label_text, languageiso, area_text, translatio
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'extra', 'it', 'patient_criteria', 'Verifica dei ulteriori criteri';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'date_consent', 'it', 'patient_criteria', 'Data del consenso';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'other_trials', 'it', 'patient_criteria', 'Partecipazione ad altri studi clinici';
-
+END;
 
