@@ -131,7 +131,7 @@ $html .= HTML::BR;
 
 
 //--------------------------------------HTML
-HTML::set_visit_block($oPatient, $oVisit);
+HTML::set_detail_block($oPatient, $oVisit);
 URL::changeable_vars_reset();
 URL::changeable_var_add('pid', $oPatient->id);
 $html .= HTML::set_button(Icon::set_back().$oPatient->patient_id.' '.Language::find('visits'), '', URL::create_url('visits'));

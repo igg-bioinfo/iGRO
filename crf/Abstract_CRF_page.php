@@ -102,7 +102,7 @@ abstract class Abstract_CRF_page {
 
     // Sets visit block data HTML for the CRF page
     protected function set_visit_block() {
-        HTML::set_visit_block($this->oPatient, $this->oVisit);
+        HTML::set_detail_block($this->oPatient, $this->oVisit);
     }
 
     // Sets JS data for CRF page

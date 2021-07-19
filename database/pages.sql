@@ -16,6 +16,7 @@ INSERT INTO page_template (file_name,page_url,id_area,need_login) VALUES
 	 ('patient_criteria.php','patient_criteria',2,1),
 	 ('visit_list.php','visits',1,1),
 	 ('visit_list.php','visits',2,1),
+	 ('visit_edit.php','visit',1,1),
 	 ('visit_edit.php','visit',2,1),
 	 ('visit_index.php','visit_index',1,1),
 	 ('visit_index.php','visit_index',2,1),

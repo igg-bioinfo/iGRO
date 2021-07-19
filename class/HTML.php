@@ -189,38 +189,48 @@ class HTML {
         return $button;
     }
 
-    static function set_visit_block($oPatient, $oVisit) {
+    static function set_detail_block($oPatient, $oVisit = NULL) {
         global $oUser, $oArea;
         self::$visit_block = '';
         $is_anonymous = in_array($oArea->id, [Area::$ID_ADMIN]);
 
-        if (isset($oPatient) && $oPatient->id != 0 && isset($oVisit) && $oVisit->id != 0) {
+        if (isset($oPatient) && $oPatient->id != 0) {
 
             $style_row = 'background-color: #' . $oArea->color_background . '; color: #' . $oArea->color_font . '; margin: 0; ';
             $style_cell = 'text-align: left; padding: 5px; ';
 
             self::$visit_block .= '<div class="row" style="' . $style_row . '">';
             if (in_array($oArea->id, [Area::$ID_ADMIN, Area::$ID_INVESTIGATOR])) {
-                self::$visit_block .= '<div class="col-sm-4" style="' . $style_cell . '">';
+                self::$visit_block .= '<div class="col-sm-3" style="' . $style_cell . '">';
                 self::$visit_block .= Language::find('patient_code').': <b style="white-space: nowrap;">' . $oPatient->patient_id . '</b>';
                 self::$visit_block .= '</div>';
             }
             if (in_array($oArea->id, [Area::$ID_INVESTIGATOR])) {
-                self::$visit_block .= '<div class="col-sm-4" style="' . $style_cell . '">';
+                self::$visit_block .= '<div class="col-sm-3" style="' . $style_cell . '">';
                 self::$visit_block .= Language::find('fullname').': <b style="white-space: nowrap;">' . ($oPatient->first_name == 'Encrypted' ? 'Encrypted' : $oPatient->first_name . ' ' . $oPatient->last_name) . '</b>';
                 self::$visit_block .= '</div>';
             } else {
-                self::$visit_block .= '<div class="col-sm-4" style="' . $style_cell . '">';
+                self::$visit_block .= '<div class="col-sm-3" style="' . $style_cell . '">';
                 self::$visit_block .= Language::find('export_code').': <b style="white-space: nowrap;">' . $oPatient->export_id . '</b>';
                 self::$visit_block .= '</div>';
             }
-            self::$visit_block .= '</div>';
+            //self::$visit_block .= '</div>';
 
+            //self::$visit_block .= '<div class="row" style="' . $style_row . '">';
+            self::$visit_block .= '<div class="col-sm-3" style="' . $style_cell . '">';
+            self::$visit_block .= Language::find('diagnosis').': <b style="white-space: nowrap;">' . $oPatient->get_gender_text() . '</b>';
+            self::$visit_block .= '</div>';
+            self::$visit_block .= '<div class="col-sm-3" style="' . $style_cell . '">';
+            self::$visit_block .= Language::find('diagnosis').': <b style="white-space: nowrap;">' . $oPatient->dia_name . '</b>';
+            self::$visit_block .= '</div>';
+            self::$visit_block .= '</div>';
+        }
+        if (isset($oVisit) && $oVisit->id != 0) {
             self::$visit_block .= '<div class="row" style="' . $style_row . '">';
-            self::$visit_block .= '<div class="col-sm-4" style="' . $style_cell . '">';
+            self::$visit_block .= '<div class="col-sm-3" style="' . $style_cell . '">';
             self::$visit_block .= Language::find('visit').': <b style="white-space: nowrap;">' . $oVisit->type_text . '</b>';
             self::$visit_block .= '</div>';
-            self::$visit_block .= '<div class="col-sm-4" style="' . $style_cell . '">';
+            self::$visit_block .= '<div class="col-sm-3" style="' . $style_cell . '">';
             self::$visit_block .= Language::find('date').': <b style="white-space: nowrap;">' . Date::default_to_screen($oVisit->date) . '</b>';
             self::$visit_block .= '</div>';
             self::$visit_block .= '</div>';

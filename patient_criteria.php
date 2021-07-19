@@ -95,7 +95,7 @@ if ($act.'' != '') {
 
 
 //--------------------------------FORM
-$form .= Form_input::createInputText('id_dia', Language::find('diagnosis'), $oPatient->dia_name, 12, true, '', 1000, true);
+//$form .= Form_input::createInputText('id_dia', Language::find('diagnosis'), $oPatient->dia_name, 12, true, '', 1000, true);
 draw_criteria($oAllCriteria->oInclusion);
 draw_criteria($oAllCriteria->oExclusion);
 draw_criteria($oAllCriteria->oExtra);
@@ -126,6 +126,7 @@ if ($is_area_allowed) {
 
 
 //--------------------------------HTML
+HTML::set_detail_block($oPatient);
 URL::changeable_vars_reset_except(['pid']);
 HTML::$title = Language::find('patient_criteria') . '<br>' . $oPatient->patient_id . 
     ($oPatient->first_name != 'Encrypted' ? ' - ' . $oPatient->first_name . ' ' . $oPatient->last_name : '');
