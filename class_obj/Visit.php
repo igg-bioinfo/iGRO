@@ -13,6 +13,8 @@ class Visit {
     public $type_id = NULL;
     public $type = '';
     public $type_code = '';
+    public $type_text = '';
+    
     public $always_show = NULL;
     public $is_extra = NULL;
     public $has_output = NULL;
