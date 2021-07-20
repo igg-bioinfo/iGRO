@@ -80,7 +80,7 @@ class Field {
         if ($this->id == 0) {
             $this->create($form_id);
         } else {
-            $this->update();
+            $this->update($form_id);
         }
         $this->manage_db();
     }
@@ -100,12 +100,17 @@ class Field {
 
     }
 
-    private function update(){
+    private function update($form_id){
         $params = [$this->name, $this->table_name, $this->type, $this->is_extra_field, 
             $this->description, $this->limit_min, $this->limit_max, $this->id];
         $sql = "UPDATE field SET field_name = ?, table_name = ?, field_type = ?, is_extra_field = ?,
             field_description = ?, limit_min = ?, limit_max = ? 
             WHERE field_id = ? ";
+        Database::edit($sql, $params);
+        
+        $params = [$this->page_number, $this->order_id, $this->required, $form_id, $this->id];
+        $sql = "UPDATE field_form SET page_number = ?, order_id = ?, required = ? 
+            WHERE form_id = ? AND field_id = ? ";
         Database::edit($sql, $params);
     }
 

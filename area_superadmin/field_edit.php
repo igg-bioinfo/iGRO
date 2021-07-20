@@ -42,7 +42,8 @@ if ($act != '') {
         $oEditFld->save($oFrm->id);
         foreach($langs as $lang) {
             $iso = $lang['languageiso'];
-            Language::save($oEditFld->name, $iso, $oEditFld->table_name, Security::sanitize(INPUT_POST, $iso));
+            if (Security::sanitize(INPUT_POST, $iso) != '')
+                Language::save($oEditFld->name, $iso, $oEditFld->table_name, Security::sanitize(INPUT_POST, $iso));
         }
     } else if ($act == 'delete') {
     }
@@ -57,7 +58,7 @@ $form .= Form_input::createInputText('table_name', Language::find('table'), $oEd
 
 foreach($langs as $lang) {
     $iso = $lang['languageiso'];
-    $form .= Form_input::createInputText($iso, $lang['translated'], Language::get($oEditFld->name, $iso), 3, false, "check_text('".$iso."','2','100');", 255, $is_view);
+    $form .= Form_input::createInputText($iso, $lang['translated'], Language::get($oEditFld->name, $iso), 3, false, "check_text('".$iso."','','', '', false);", 255, $is_view);
 }
 $form .= '</div><div class="row">';
 
