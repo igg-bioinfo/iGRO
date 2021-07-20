@@ -115,11 +115,11 @@ if ($is_form) {
 
 
 //--------------------------------FORM
-$form .= Form_input::createInputText('group_name', Language::find('group'), '', 4, false, "check_text('group_name','2','100');", 255, $is_view);
+$form .= Form_input::createInputText('group_name', Language::find('group'), '', 4, false, "check_text('group_name','','','',false);", 255, $is_view);
 $form .= Form_input::createInputText('order_id', Language::find('order'), '', 2, true, "check_integer('order_id','','', true);", 255, $is_view);
 foreach($langs as $lang) {
     $iso = $lang['languageiso'];
-    $form .= Form_input::createInputText($iso, $lang['translated'], '', 3, false, "check_text('".$iso."','2','100');", 255, $is_view);
+    $form .= Form_input::createInputText($iso, $lang['translated'], '', 3, false, "check_text('".$iso."','','','',false);", 255, $is_view);
 }
 $form .= '</div><div class="row">';
 $form .= Form_input::createLabel('is_required', Language::find('required'));

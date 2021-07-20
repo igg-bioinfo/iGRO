@@ -218,7 +218,7 @@ class HTML {
 
             //self::$visit_block .= '<div class="row" style="' . $style_row . '">';
             self::$visit_block .= '<div class="col-sm-3" style="' . $style_cell . '">';
-            self::$visit_block .= Language::find('diagnosis').': <b style="white-space: nowrap;">' . $oPatient->get_gender_text() . '</b>';
+            self::$visit_block .= Language::find('sex').': <b style="white-space: nowrap;">' . $oPatient->get_gender_text() . '</b>';
             self::$visit_block .= '</div>';
             self::$visit_block .= '<div class="col-sm-3" style="' . $style_cell . '">';
             self::$visit_block .= Language::find('diagnosis').': <b style="white-space: nowrap;">' . $oPatient->dia_name . '</b>';
