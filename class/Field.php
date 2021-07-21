@@ -139,7 +139,8 @@ class Field {
                 $type .= " FLOAT ";
                 break;
         }
-        $type .= ($this->required.'' == '1' ? ' NOT' : '').' NULL';
+        //$type .= ($this->required.'' == '1' ? ' NOT' : '').' NULL';
+        $type .= ' NULL';
         return $type;
     }
 

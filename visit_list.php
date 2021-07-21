@@ -55,7 +55,7 @@ foreach ($oVisits as $oVis) {
     //-------------CELLS
     $tds = '';
     $tds .= HTML::set_td(Date::default_to_screen($oVis->date));
-    $tds .= HTML::set_td($oVis->type);
+    $tds .= HTML::set_td($oVis->type_text);
     $tds .= HTML::set_td(Icon::set_checker($oVis->is_lock), '', false, '', 'text-align: center; ');
 
     //-------------BUTTONS

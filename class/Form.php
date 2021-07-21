@@ -139,7 +139,7 @@ class Form {
             IFNULL(FSV.ludati, FSP.ludati) AS ludati
             FROM form_visit_type FVT
             INNER JOIN form FM ON FVT.form_id = FM.form_id
-            LEFT OUTER JOIN form_status FSP ON FM.is_visit_related IS NULL AND FSP.form_id = FM.form_id AND FSP.id_paz = ?
+            LEFT OUTER JOIN form_status FSP ON (FM.is_visit_related IS NULL OR FM.is_visit_related = 0) AND FSP.form_id = FM.form_id AND FSP.id_paz = ?
             LEFT OUTER JOIN form_status FSV ON FM.is_visit_related = 1 AND FSV.form_id = FM.form_id AND FSV.id_visita = ?
             WHERE FVT.visit_type_id = ? AND FM.form_id IN (" . $this->dependencies . ")
             ORDER BY FVT.is_required DESC, FVT.order_id ", $params);
@@ -166,7 +166,7 @@ class Form {
             IFNULL(FSV.ludati, FSP.ludati) AS ludati
             FROM form_visit_type FVT
             INNER JOIN form FM ON FVT.form_id = FM.form_id
-            LEFT OUTER JOIN form_status FSP ON FM.is_visit_related IS NULL AND FSP.form_id = FM.form_id AND FSP.id_paz = ?
+            LEFT OUTER JOIN form_status FSP ON (FM.is_visit_related IS NULL OR FM.is_visit_related = 0) AND FSP.form_id = FM.form_id AND FSP.id_paz = ?
             LEFT OUTER JOIN form_status FSV ON FM.is_visit_related = 1 AND FSV.form_id = FM.form_id AND FSV.id_visita = ?
             WHERE FVT.visit_type_id = ?
             ORDER BY FVT.order_id, FVT.is_required DESC ", $params);
@@ -544,7 +544,7 @@ class Form {
         $params = [$this->id, $this->main_value];
         $rows = Database::read($sql, $params);
         if (count($rows)) {
-            $is_completed = $rows[0]['is_completed'];
+            $is_completed = $rows[0]['is_completed'] == 1;
         }
         return $is_completed;
     }
@@ -556,9 +556,9 @@ class Form {
         $sql_insert_fields = ["is_completed", "page", "author", "ludati", "form_id", $this->main_field];
         $sql_insert_values = ["?", "?", "?", "NOW()", "?", "?"];
         $table = "form_status";
-        $params_update = [$this->is_completed, $this->page_current, $oUser->id];
+        $params_update = [$this->is_completed ? 1 : 0, $this->page_current, $oUser->id];
         $params_update_where = [$this->id, $this->main_value];
-        $params_insert = [$this->is_completed, $this->page_current, $oUser->id, $this->id, $this->main_value];
+        $params_insert = [$this->is_completed ? 1 : 0, $this->page_current, $oUser->id, $this->id, $this->main_value];
         $this->insert_or_update($table, 
             $sql_update, $sql_update_where, $sql_insert_fields, $sql_insert_values, 
             $params_update, $params_update_where, $params_insert);

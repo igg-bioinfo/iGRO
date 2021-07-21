@@ -432,7 +432,7 @@ abstract class Abstract_CRF_page {
         // no progress bar for one-page forms and forms in view mode
         if ($this->is_view || $this->max_page == 1)
             return;
-        echo $this->max_page; exit;
+        //echo $this->max_page; exit;
         $page_percentage = $this->page_number / $this->max_page * 100;
         $this->html .= '<div class="progress" style="width: 200px; height: 25px; margin: 0 auto">
                             <div class="progress-bar" role="progressbar" style="width: ' . $page_percentage . '%"><span style="font-size: 15px">' . $this->page_number . '/' . $this->max_page . '</span></div>

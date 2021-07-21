@@ -29,11 +29,16 @@ class Language {
         return Database::read($sql, []);
     }
 
+    public static function get_areas() {
+        $sql = 'SELECT DISTINCT area_text, area_text FROM language_translation ORDER BY area_text';
+        return Database::read($sql, []);
+    }
+
     public static function add_area($area_text) {
         if (self::$iso.'' == '') { self::$iso = Config::LANGUAGEISO; }
         $area_text = strtolower($area_text);
         $sql = "SELECT DISTINCT TE.label_text,
-                IFNULL(T.languageiso, TE.languageiso) AS languageiso, IFNULL(T.translation, TE.translation) AS translation
+                IFNULL(T.languageiso, TE.languageiso) AS languageiso, IFNULL(T.translation, TE.translation) AS translation, TE.translation as english
             FROM language_translation TE
             LEFT OUTER JOIN language_translation T ON T.label_text = TE.label_text AND T.languageiso = ? AND T.area_text = TE.area_text
             WHERE TE.languageiso = 'en' and TE.area_text = ? ";

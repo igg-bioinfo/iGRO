@@ -126,6 +126,12 @@ INSERT INTO language_translation (label_text, languageiso, area_text, translatio
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'details', 'it', 'general', 'Dettagli';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'back_to', 'it', 'general', 'Torna a';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'quality_check', 'it', 'general', 'Controllo di qualità';
+INSERT INTO language_translation(label_text, languageiso, area_text, `translation`)VALUES('translations', 'it', 'general', 'Traduzioni');
+INSERT INTO language_translation (label_text, languageiso, area_text, `translation`)VALUES('weight', 'it', 'general', 'Peso (Kg)');
+INSERT INTO language_translation (label_text, languageiso, area_text, `translation`)VALUES('height', 'it', 'general', 'Altezza (cm)');
+INSERT INTO language_translation (label_text, languageiso, area_text, `translation`)VALUES('weeks', 'it', 'general', 'Settimane');
+INSERT INTO language_translation (label_text, languageiso, area_text, `translation`)VALUES('father', 'it', 'general', 'Padre');
+INSERT INTO language_translation (label_text, languageiso, area_text, `translation`)VALUES('mother', 'it', 'general', 'Madre');
 
 
 

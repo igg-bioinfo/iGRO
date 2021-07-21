@@ -12,7 +12,8 @@ class Menu {
         ["users", 'users'],
         //["diagnosis", 'diagnosis'],
         ["visit_types", 'visits'],
-        ["forms", 'forms']
+        ["forms", 'forms'],
+        ["translations", 'translations']
     ];
 
     protected $oUser = NULL;
