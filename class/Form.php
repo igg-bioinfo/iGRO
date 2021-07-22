@@ -551,12 +551,12 @@ class Form {
 
     public function save_form_status() {
         global $oUser;
-        $sql_update = "is_completed = ?, page = ?, author = ?, ludati = NOW() ";
         $sql_update_where = " WHERE form_id = ? AND " . $this->main_field . " = ? ";
+        $sql_update = "is_completed = ?, page = ?, author = ?, ludati = NOW() ".$sql_update_where;
         $sql_insert_fields = ["is_completed", "page", "author", "ludati", "form_id", $this->main_field];
         $sql_insert_values = ["?", "?", "?", "NOW()", "?", "?"];
         $table = "form_status";
-        $params_update = [$this->is_completed ? 1 : 0, $this->page_current, $oUser->id];
+        $params_update = [$this->is_completed ? 1 : 0, $this->page_current, $oUser->id, $this->id, $this->main_value];
         $params_update_where = [$this->id, $this->main_value];
         $params_insert = [$this->is_completed ? 1 : 0, $this->page_current, $oUser->id, $this->id, $this->main_value];
         $this->insert_or_update($table, 
