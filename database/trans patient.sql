@@ -23,7 +23,7 @@ INSERT INTO language_translation (label_text, languageiso, area_text, translatio
 
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'patient_name', 'it', 'patient', 'Nome del paziente o anche la lettera iniziale'; 
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'patient_lastname', 'it', 'patient', 'Cognome del paziente o anche la lettera iniziale';
-INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'sex', 'it', 'patient', 'Genere'; 
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'sex', 'it', 'patient', 'Sesso'; 
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'male', 'it', 'patient', 'Maschio'; 
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'female', 'it', 'patient', 'Femmina'; 
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'date_birth', 'it', 'patient', 'Data di nascita';

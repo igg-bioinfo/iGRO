@@ -409,20 +409,22 @@ class HTML {
 
         //----------------------------------------------ERROR MESSAGE----------------------------------------------
         echo '<div class="centered-element">';
-        echo '<div class="message_text error_text" id="table_error" style="display: none;">';
-        echo '<table><tr><td style="vertical-align: middle; padding: 0px 8px; " >';
+        echo '<div id="table_error" style="display: none;">';
+        echo '<table class="message_text error_text"><tr><td style="vertical-align: middle; padding: 0px 8px; " >';
         echo '<i class="' . Globals::ICON_ERROR . '" ></i>';
         echo '</td><td style="font-weight: bold; vertical-align: middle;" id="table_text_error">';
         echo '</td></tr></table>';
+        echo HTML::BR;
         echo '</div>';
-        echo '<div class="message_text warning_text" id="table_warning" style="display: none;">';
-        echo '<table><tr><td style="vertical-align: middle; padding: 0px 8px; " >';
+        echo '<div id="table_warning" style="display: none;">';
+        echo '<table class="message_text warning_text"><tr><td style="vertical-align: middle; padding: 0px 8px; " >';
         echo '<i class="' . Globals::ICON_WARNING . '" ></i>';
         echo '</td><td style="font-weight: bold; vertical-align: middle;" id="table_text_warning">';
         echo '</td></tr></table>';
+        echo HTML::BR;
         echo '</div>';
-        echo '<div class="message_text ok_text" id="table_ok" style="display: none;">';
-        echo '<table><tr><td style="vertical-align: middle; padding: 0px 8px; " >';
+        echo '<div id="table_ok" style="display: none;">';
+        echo '<table class="message_text ok_text"><tr><td style="vertical-align: middle; padding: 0px 8px; " >';
         echo '<i class="' . Globals::ICON_CHECKED . '" ></i>';
         echo '</td><td style="font-weight: bold; vertical-align: middle;" id="table_text_ok">';
         echo '</td></tr></table>';

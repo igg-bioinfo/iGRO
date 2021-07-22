@@ -20,7 +20,7 @@ INSERT INTO language_translation (label_text,languageiso,area_text,`translation`
 	 ('language','en','general','Language'),
 	 ('author','en','general','Author'),
 	 ('visit','en','general','Visit'),
-	 ('visits','en','general','Visits');
+	 ('visits','en','general','Visits list');
 INSERT INTO language_translation (label_text,languageiso,area_text,`translation`) VALUES
 	 ('type','en','general','Type'),
 	 ('center','en','general','Center'),
