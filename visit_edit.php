@@ -117,7 +117,7 @@ $html .= HTML::set_form($form, 'form1', '');
 //---------------------------------BUTTONS
 if (!$is_view) {
     $html .= HTML::set_button(Icon::set_save() . ($is_new ? Language::find('new_visit') : Language::find('save')), "$('#act').val('save'); page_validation('form1');", '', 'btn_save', 'float:right;');
-    if (!$date_disabled) {
+    if (!$date_disabled && $oVisit->id != 0) {
         $text = str_replace('{0}', '<b>'.$oVisit->type_text.'</b>', Language::find('delete_confirmation'));
         $html .= Form_input::createPopup('vis_delete', Language::find('delete').' '.$oVisit->type_text, $text, Language::find('delete'), 
             "$('#act').val('delete'); page_validation('form1');", Language::find('no'));

@@ -251,7 +251,10 @@ class Visit {
     }
 
     public function has_forms_started() {
-        $forms_started = Database::read("SELECT * FROM form_status WHERE id_visita = ? ", [$this->id]);
+        $forms_started = [];
+        if ($this->id != 0) {
+            $forms_started = Database::read("SELECT * FROM form_status WHERE id_visita = ? ", [$this->id]);
+        }
         return count($forms_started) > 0;
     }
 

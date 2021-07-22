@@ -475,6 +475,8 @@ abstract class Abstract_CRF_page {
     protected function set_modify_button() {
         //add modify button on the right only in view pages, not locked and in Admin and investigator area
         if ($this->is_view && !$this->oVisit->is_lock && ($this->oArea->id == Area::$ID_ADMIN || $this->oArea->id == Area::$ID_INVESTIGATOR)) {
+            URL::changeable_vars_reset_except(['pid', 'vid', 'fid']);
+            URL::changeable_var_add('page', '1');
             URL::changeable_var_add('act', 'edit');
             $this->html .= HTML::set_button(Icon::set_edit() . self::$BUTTON_LABEL_MODIFY, '', URL::create_url(Globals::FORM_URL, ''), '', 'float: right;');
         }
