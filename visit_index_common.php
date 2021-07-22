@@ -67,7 +67,7 @@ function set_form_buttons($oParents) {
 
             //DELETE BUTTON
             if (!$is_visit_locked) {
-                $buttons .= HTML::set_button(Icon::set_remove() . Language::find('delete'), " delete_data_form('".$oForm->type."');");
+                $buttons .= HTML::set_button(Icon::set_remove() . Language::find('delete'), " delete_data_form('".$oForm->type."', ".($oForm->is_visit_related ? '1' : '0').");");
             }
         }
     }

@@ -11,6 +11,7 @@ if ($oPatient->id == 0 || $oVisit->id == 0) {
 
 //---------------------------------CONSTANTS
 const VISIT_FORM_TYPE = 'delete_visit_form_type';
+const VISIT_RELATED = 'delete_visit_related';
 const FORM_DISABLED = 2;
 const FORM_REQUIRED = 1;
 const FORM_OPTIONAL = 0;
@@ -44,14 +45,18 @@ if (Security::sanitize(INPUT_POST, 'unlock_mail_send') != '') {
 
 //---------------------------------DELETE
 if (Security::sanitize(INPUT_POST, VISIT_FORM_TYPE) != '') {
-    $oDeleteForm = new Form(Security::sanitize(INPUT_POST, VISIT_FORM_TYPE), $oVisit->id);
+    $del_vis_rel = Security::sanitize(INPUT_POST, VISIT_RELATED);
+    $oDeleteForm = new Form(Security::sanitize(INPUT_POST, VISIT_FORM_TYPE), $del_vis_rel == '1' ? $oVisit->id : $oPatient->id);
     $oDeleteForm->delete();
     $oDeleteForm->delete_form_status();
     URL::redirect('visit_index');
 }
-HTML::$js .= JS::set_func('delete_data_form', "$('#" . VISIT_FORM_TYPE . "').val(del_form_type); $('#popup_delete_form').modal('show'); ", 'del_form_type');
+HTML::$js .= JS::set_func('delete_data_form', 
+    "$('#" . VISIT_FORM_TYPE . "').val(del_form_type); $('#" . VISIT_RELATED . "').val(del_vis_related); $('#popup_delete_form').modal('show'); ", 
+    'del_form_type, del_vis_related');
 $form_delete = '';
 $form_delete .= Form_input::createHidden(VISIT_FORM_TYPE);
+$form_delete .= Form_input::createHidden(VISIT_RELATED);
 $text = str_replace('{0}', '<b>'.strtolower(Language::find('form_title')) .'</b>', Language::find('delete_confirmation', ['validation']));
 $form_delete .= Form_input::createPopup('popup_delete_form',  Language::find('delete').' '.Language::find('form_title'), $text,  Language::find('delete'), "$('#form_delete').submit();");
 $html .= HTML::set_form($form_delete, 'form_delete');
