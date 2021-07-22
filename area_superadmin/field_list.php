@@ -35,6 +35,8 @@ $thead = HTML::set_tr(
     HTML::set_td(Language::find('table'), '', true) .
     HTML::set_td(Language::find('extra'), '', true) .
     HTML::set_td(Language::find('required'), '', true) .
+    HTML::set_td(Language::find('page'), '', true) .
+    HTML::set_td(Language::find('order'), '', true) .
     HTML::set_td('', '', true), true
 );
 foreach ($oFrm->oFields as $oFld) {
@@ -49,6 +51,8 @@ foreach ($oFrm->oFields as $oFld) {
         HTML::set_td($oFld->table_name) .
         HTML::set_td(Icon::set_checker($oFld->is_extra_field)) .
         HTML::set_td(Icon::set_checker($oFld->required.'' == '1')) .
+        HTML::set_td($oFld->page_number) .
+        HTML::set_td($oFld->order_id) .
         HTML::set_td($buttons) 
     );
 }
@@ -58,7 +62,9 @@ $js = 'columnDefs: [
     {width: "5px", targets: [2]}, 
     {width: "5px", targets: [3]}, 
     {width: "5px", targets: [4]}, 
-    {orderable: false, targets: [5]},
+    {width: "5px", targets: [5]}, 
+    {width: "5px", targets: [6]}, 
+    {orderable: false, targets: [7]},
     {className: "responsive-table-dynamic-column", "targets": [0,1,2,3,4,5]}
     ], '.JS::set_responsive_lang().' ';
 $form .= HTML::set_bootstrap_cell(HTML::set_table_responsive($thead . HTML::set_tbody($trs), 'fields', $js), 12);
