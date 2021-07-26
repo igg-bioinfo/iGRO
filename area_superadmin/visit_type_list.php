@@ -57,7 +57,7 @@ foreach ($visit_types as $vt) {
     $color_f = $vt['count_form'].'' == '0' ? 'FFA79C' : '';
     $button_common = '';
     $button_common .= HTML::set_button(Icon::set_edit().Language::find('modify'), '', URL::create_url('visit_type'));
-    $button_common .= HTML::set_button(Icon::set_list().Language::find('forms').' ('.$vt['count_form'].')', '', URL::create_url('visit_forms'));
+    $button_common .= HTML::set_button(Icon::set_list().Language::find('forms').' ('.$vt['count_form'].')', '', URL::create_url('visit_forms'), '', '', '', $color_f);
     $trs .= HTML::set_tr(
         HTML::set_td(Language::find($vt['visit_type'])) .
         HTML::set_td($vt['visit_type_code']) .

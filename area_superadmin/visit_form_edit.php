@@ -32,15 +32,15 @@ function is_selected($id, $title, &$js_sel) {
             $js_sel .= " $('#order_id').val('".$sel['order_id']."'); ";
             $js_sel .= " $('#dependencies').val('".$sel['dependencies']."'); ";
             $js_sel .= " $('#is_required_".$sel['order_id']."').prop('checked', true); "; 
-            $js_sel .= " $('#update_btn').html('".Language::find('modify')." ".$title."'); "; 
+            $js_sel .= " $('#update_btn').html('".Language::find('modify')." ".str_replace("&#039;", " ", $title)."'); "; 
             $js_sel .= " $('#update_btn').show(); "; 
             $js_sel .= " $('#".($is_form ? "visit_type_id" : "form_id")."').val('".$sel['id']."'); ";
-            $js_sel .= " check_text('group_name','2','100'); check_integer('order_id','','', true); check_radio('is_required');";
+            $js_sel .= " check_text('group_name','','','',false); check_integer('order_id','','', true); check_radio('is_required');";
             
             foreach($langs as $lang) {
                 $iso = $lang['languageiso'];
                 $js_sel .= " $('#".$iso."').val('".Language::get($sel['group_name'], $iso)."'); "; 
-                $js_sel .= " check_text('".$iso."','2','100'); "; 
+                $js_sel .= " check_text('".$iso."','','','',false); "; 
             }
             return true;
         }

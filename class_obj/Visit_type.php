@@ -13,6 +13,8 @@ class Visit_type {
     public $day_upper = null;
     public $always_show = false;
     public $is_extra = false;
+    public $has_output = false;
+    public $has_randomization = false;
     public static $visit_list_mode = true;
     public $forms = [];
 
@@ -45,6 +47,8 @@ class Visit_type {
         $this->day_upper = (!isset($visit_type["visit_day_upper"]) ? null : $visit_type["visit_day_upper"]);
         $this->always_show = $visit_type["always_show"] . '' == '1';
         $this->is_extra = $visit_type["is_extra"] . '' == '1';
+        $this->has_output = $visit_type["has_output"] . '' == '1';
+        $this->has_randomization = $visit_type["has_randomization"] . '' == '1';
         if (!self::$visit_list_mode)
             $this->get_forms();
     }
@@ -83,16 +87,16 @@ class Visit_type {
     }
 
     function create() {
-        $params = [$this->name, $this->code, $this->day, $this->day_lower, $this->day_upper, $this->always_show, $this->is_extra];
-        $sql = "INSERT INTO visit_type (visit_type, visit_type_code, visit_day, visit_day_lower, visit_day_upper, always_show, is_extra) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $params = [$this->name, $this->code, $this->day, $this->day_lower, $this->day_upper, $this->always_show, $this->is_extra, $this->has_output, $this->has_randomization];
+        $sql = "INSERT INTO visit_type (visit_type, visit_type_code, visit_day, visit_day_lower, visit_day_upper, always_show, is_extra, has_output, has_randomization) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $this->id = Database::edit($sql, $params, true);
     }
 
     function update() {
-        $params = [$this->name, $this->code, $this->day, $this->day_lower, $this->day_upper, $this->always_show, $this->is_extra, $this->id];
+        $params = [$this->name, $this->code, $this->day, $this->day_lower, $this->day_upper, $this->always_show, $this->is_extra, $this->has_output, $this->has_randomization, $this->id];
         $sql = "UPDATE visit_type SET visit_type = ?, visit_type_code = ?, visit_day = ?, visit_day_lower = ?, visit_day_upper = ?, 
-            always_show = ?, is_extra = ?
+            always_show = ?, is_extra = ?, has_output = ?, has_randomization = ?
             WHERE visit_type_id = ? ";
         Database::edit($sql, $params);
     }
