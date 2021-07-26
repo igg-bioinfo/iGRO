@@ -104,7 +104,7 @@ class Menu {
         $oVisits = Visit::get_all_by_id_paz($this->oPatient->id);
         foreach ($oVisits as $oVis) {
             URL::changeable_var_add('vid', $oVis->id);
-            $this->add_menu(URL::create_url("visit_index", $this->oArea->url, true), Date::default_to_screen($oVis->date) . ' - ' . $oVis->type, self::MENU_PATIENT);
+            $this->add_menu(URL::create_url("visit_index", $this->oArea->url, true), Date::default_to_screen($oVis->date) . ' - ' . $oVis->type_text, self::MENU_PATIENT);
         }
         URL::changeable_vars_from_onload_vars();
     }

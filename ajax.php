@@ -129,7 +129,8 @@ switch (URL::get_onload_var('fn')) {
         //SUGGESTED TYPE
         $oSuggested_type = NULL;
         if ($is_new || $is_new_date) {
-            $oSuggested_type = $oVisit_types[0]; // $oEnrollProj->suggests_type($oVisit_types);
+            $days = Date::date_difference_in_days(Date::default_to_object($oPatient->date_first_visit), $date_input_object);
+            $oSuggested_type = Visit_type::suggests($days, $oVisit_types);  //$oVisit_types[0]; // $oEnrollProj->suggests_type($oVisit_types);
         } else {
             $oSuggested_type = new Visit_type();
             $oSuggested_type->get_by_id($oVisit->type_id);

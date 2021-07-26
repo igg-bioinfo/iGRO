@@ -13,7 +13,6 @@ class Visit_type {
     public $day_upper = null;
     public $always_show = false;
     public $is_extra = false;
-    public $is_remote = false;
     public static $visit_list_mode = true;
     public $forms = [];
 
@@ -104,4 +103,19 @@ class Visit_type {
         Database::edit($sql, $params);
     }
 
+    static function suggests($days, &$oVisit_types) {
+        $oTypes_admitted = [];
+        $oSuggested = NULL;
+        foreach($oVisit_types as $oType) {
+            if ($days >= $oType->day_lower && $days <= $oType->day_upper) {
+                $oSuggested = $oType;
+                $oTypes_admitted[] = $oType;
+            }
+            if ($oType->always_show) {
+                $oTypes_admitted[] = $oType;
+            }
+        }
+        $oVisit_types = $oTypes_admitted;
+        return $oSuggested;
+    }
 }

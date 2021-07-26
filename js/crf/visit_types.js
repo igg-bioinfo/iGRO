@@ -21,6 +21,7 @@ function visit_types_done(data){
         return;
     }
     if(data.vtypes.length == 0) {
+        $("#vtype_html").html('');
         $("#btn_save").hide();
         $('#table_error').show();
         $('#table_text_error').html(NO_TYPE);
