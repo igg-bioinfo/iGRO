@@ -50,6 +50,8 @@ $thead = HTML::set_tr(
     HTML::set_td(Language::find('max'), '', true) .
     HTML::set_td(Language::find('always_show'), '', true) .
     HTML::set_td(Language::find('extra_visit'), '', true) .
+    HTML::set_td(Language::find('output'), '', true) .
+    HTML::set_td(Language::find('randomization'), '', true) .
     HTML::set_td('', '', true), true
 );
 foreach ($visit_types as $vt) {
@@ -66,6 +68,8 @@ foreach ($visit_types as $vt) {
         HTML::set_td($vt['visit_day_upper']) .
         HTML::set_td(Icon::set_checker($vt['always_show'].'' == '1')) .
         HTML::set_td(Icon::set_checker($vt['is_extra'].'' == '1')) .
+        HTML::set_td(Icon::set_checker($vt['has_output'].'' == '1')) .
+        HTML::set_td(Icon::set_checker($vt['has_randomization'].'' == '1')) .
         HTML::set_td($button_common) 
     );
 }

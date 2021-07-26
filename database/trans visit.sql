@@ -55,6 +55,8 @@ INSERT INTO language_translation (label_text, languageiso, area_text, translatio
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'alert_email_unlock', 'it', 'visit', 'Dopo la conferma, sarà necessario mandare una email automatizzata per sbloccare la visita e modificare i dati inseriti';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'output', 'en', 'visit', 'Output';
 INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'output', 'it', 'visit', 'Output';
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'randomization', 'en', 'visit', 'Randomization';
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'randomization', 'it', 'visit', 'Randomizzazione';
 
 
 

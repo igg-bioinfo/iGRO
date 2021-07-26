@@ -68,12 +68,12 @@ $always_show = $oEditVT->id == 0 ? NULL : ($oEditVT->always_show ? 1 : 0);
 $form .= Form_input::createRadio('always_show', Language::find('yes'), $always_show, 1, 3, false, "check_radio('always_show');", $is_view);
 $form .= Form_input::createRadio('always_show', Language::find('no'), $always_show, 0, 3, true, "check_radio('always_show');", $is_view);
 
-$form .= Form_input::createLabel('has_randomization', Language::find('has_randomization'));
+$form .= Form_input::createLabel('has_randomization', Language::find('randomization'));
 $has_randomization = $oEditVT->id == 0 ? NULL : ($oEditVT->has_randomization ? 1 : 0);
 $form .= Form_input::createRadio('has_randomization', Language::find('yes'), $has_randomization, 1, 3, false, "check_radio('has_randomization');", $is_view);
 $form .= Form_input::createRadio('has_randomization', Language::find('no'), $has_randomization, 0, 3, true, "check_radio('has_randomization');", $is_view);
 
-$form .= Form_input::createLabel('has_output', Language::find('has_output'));
+$form .= Form_input::createLabel('has_output', Language::find('output'));
 $has_output = $oEditVT->id == 0 ? NULL : ($oEditVT->has_output ? 1 : 0);
 $form .= Form_input::createRadio('has_output', Language::find('yes'), $has_output, 1, 3, false, "check_radio('has_output');", $is_view);
 $form .= Form_input::createRadio('has_output', Language::find('no'), $has_output, 0, 3, true, "check_radio('has_output');", $is_view);
