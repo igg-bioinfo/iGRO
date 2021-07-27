@@ -27,7 +27,11 @@ $cols[] = ["id" => 'visit_day_lower', "label" => Language::find('min'), "type" =
 $cols[] = ["id" => 'visit_day_upper', "label" => Language::find('max'), "type" => Field::TYPE_INT, "orderable" => true];
 $cols[] = ["id" => 'always_show', "label" => Language::find('always_show'), "type" => Paging_table::TYPE_RADIO, "orderable" => true, 
     "values" =>  [[null, Language::find('all')], ['0', Language::find('yes')], ['1', Language::find('no')]]];
-$cols[] = ["id" => 'extra_visit', "label" => Language::find('extra'), "type" => Paging_table::TYPE_RADIO, "orderable" => true, 
+$cols[] = ["id" => 'extra_visit', "label" => Language::find('extra_visit'), "type" => Paging_table::TYPE_RADIO, "orderable" => true, 
+    "values" =>  [[null, Language::find('all')], ['0', Language::find('yes')], ['1', Language::find('no')]]];
+$cols[] = ["id" => 'has_output', "label" => Language::find('output'), "type" => Paging_table::TYPE_RADIO, "orderable" => true, 
+    "values" =>  [[null, Language::find('all')], ['0', Language::find('yes')], ['1', Language::find('no')]]];
+$cols[] = ["id" => 'has_randomization', "label" => Language::find('randomization'), "type" => Paging_table::TYPE_RADIO, "orderable" => true, 
     "values" =>  [[null, Language::find('all')], ['0', Language::find('yes')], ['1', Language::find('no')]]];
 $oPaging = new Paging_table('vt_table', $cols);
 $oPaging->add_order([["visit_day", "ASC"], ["visit_type", "ASC"]]);
