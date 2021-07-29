@@ -38,7 +38,7 @@ function set_icon_and_title() {
 
 
 function set_form_buttons($oParents) {
-    global $oForm, $is_visit_locked, $is_form_completed, $is_form_inserted, $form_text_block;
+    global $oForm, $is_visit_locked, $is_form_completed, $is_form_inserted, $form_text_block, $is_admin, $is_investigator;
     $buttons = '';
     $dependencies = false;
 
@@ -66,7 +66,7 @@ function set_form_buttons($oParents) {
             $buttons .= HTML::set_button(Icon::set_view() . Language::find('view'), '', URL::create_url('form'));
 
             //DELETE BUTTON
-            if (!$is_visit_locked) {
+            if (!$is_visit_locked && ($is_admin || ($is_investigator && Config::INVESTIGATOR_CAN_DELETE_VISIT))) {
                 $buttons .= HTML::set_button(Icon::set_remove() . Language::find('delete'), " delete_data_form('".$oForm->type."', ".($oForm->is_visit_related ? '1' : '0').");");
             }
         }

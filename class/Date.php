@@ -49,6 +49,10 @@ class Date {
         return $date_temp;
     }
 
+    static function add_days($date, $days) {
+        return date('Y-m-d', strtotime($date. ' + '.$days.' days'));
+    }
+
     static function date_difference_in_days($first_date, $last_date, $is_absolute = false) {
         if(!is_a($first_date, 'DateTime')) {
             $date = Date::default_to_object($first_date);

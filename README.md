@@ -36,6 +36,7 @@ class Config {
     const EMAIL_ADMIN = '';
     const ADMIN_CHECK = false;
     const INVESTIGATOR_CAN_UNLOCK_VISIT = false;
+    const INVESTIGATOR_CAN_DELETE_VISIT = false;
     const PROJECT_CLOSED = false;
     const FOOTER = ''; //THE FOOTER WHICH WILL BE SHOWN IN ANY PAGE
 }

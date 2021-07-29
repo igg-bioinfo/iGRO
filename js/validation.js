@@ -648,7 +648,7 @@ function check_number(id, required) {
     var correct = true;
     change_status(id, 0, "");
     if (isNaN(text.value) === true) {
-        var regex = /^(-)?\d+(\.\d{1,4})?$/;
+        var regex = /^\d+(\.\d{1,4})?$/;
         change_status(id, 1, "");
         if (!regex.test(text)) {
             change_status(id, 2, TEXT_NUMBER);
