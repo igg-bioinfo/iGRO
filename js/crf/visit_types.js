@@ -39,7 +39,7 @@ function visit_types_done(data){
     vtypes += "<div class='form-group has-feedback " + (no_type ? "" : "has-success") + "'>";
         vtypes += "<div id='status_" + select_id + "'>";
             vtypes += "<select id='" + select_id + "' name='" + select_id + "' class='form-control' style='width: 300px;' " + (no_type ? "disabled" : "") 
-                + " onblur='check_select('" + select_id + "');' onchange='check_select('" + select_id + "');'>"; 
+                + " onblur='check_select(\"" + select_id + "\");' onchange='check_select(\"" + select_id + "\");'>"; 
                 vtypes += "<option value='0'>" + TRANS_SELECT + "</option>"; 
                 for (var t = 0; t < data.vtypes.length; t++) {
                     vtypes += "<option value='" + data.vtypes[t].id + "' " + (type_id === data.vtypes[t].id ? "selected='selected'" : "") + ">"; 

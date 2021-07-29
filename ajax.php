@@ -130,11 +130,25 @@ switch (URL::get_onload_var('fn')) {
         $oSuggested_type = NULL;
         if ($is_new || $is_new_date) {
             $days = Date::date_difference_in_days(Date::default_to_object($oPatient->date_first_visit), $date_input_object);
-            $oSuggested_type = Visit_type::suggests($days, $oVisit_types);  //$oVisit_types[0]; // $oEnrollProj->suggests_type($oVisit_types);
+            $oSuggested_type = Visit_type::suggests($days, $oVisit_types);
         } else {
             $oSuggested_type = new Visit_type();
             $oSuggested_type->get_by_id($oVisit->type_id);
             $oSuggested_type->name = $oSuggested_type->code.' - '.$oSuggested_type->get_name();
+            $days = Date::date_difference_in_days(Date::default_to_object($oPatient->date_first_visit), $date_input_object);
+            $oSuggested = Visit_type::suggests($days, $oVisit_types);
+            if ($oSuggested_type->id != $oSuggested->id) {
+                $found = false;
+                foreach($oVisit_types as $oVisit_type) {
+                    if ($oVisit_type->id == $oSuggested_type->id) {
+                        $found = true;
+                        break;
+                    }
+                }
+                if (!$found) {
+                    $oVisit_types[] = $oSuggested_type;
+                }
+            }
         }
         if (isset($oSuggested_type)) {
             $json .= ' "suggested": ' . json_encode($oSuggested_type) . ', ';
