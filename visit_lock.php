@@ -63,7 +63,6 @@ function send_output_checked($oOutput, $oRecipients) {
 function get_oOutput($oVis) {
     $oOutput = NULL;
     $class_output = 'Output_' . $oVis->type;
-    echo $class_output;
     if (class_exists($class_output)) {
         $oOutput = new $class_output($oVis);
     }

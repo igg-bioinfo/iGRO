@@ -92,11 +92,22 @@ class Randomization {
     //-----------------------------------------------------PROTECTED-----------------------------------------------------
     protected function assign() {
         global $oUser;
+        $where = '';
+        foreach ($this->extra_fields as $extra_field) {
+            $value = (string) $this->{$extra_field};
+            if ($value != '') {
+                $where .= " AND extra_fields LIKE '%\"".$extra_field."\":\"".$value."\"%' ";
+            }
+        }
         $sql = "UPDATE visit_randomization 
-                SET id_visita = ?, id_paz = ?, author = ?, extra_fields = '{}', ludati = NOW()
-                WHERE id_random = (SELECT IFNULL(MIN(id_random), 0) FROM visit_randomization WHERE id_visita IS NULL)
+                SET id_visita = ?, id_paz = ?, author = ?, ludati = NOW()
+                WHERE id_random = (
+                    SELECT IFNULL(MIN(id_random), 0) FROM visit_randomization WHERE id_visita IS NULL
+                    ".$where."
+                )
                 ";
         $params = [$this->oVisit->id, $this->oVisit->id_paz, $oUser->id];
+        //echo $sql; exit;
         Database::edit($sql, $params);
     }
 

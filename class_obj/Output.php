@@ -173,7 +173,8 @@ class Output {
         //$this->oScores = Abstract_score::get_all_by_visit_enroll($this->oVisit);
     }
 
-    private function get_oRandomization() {
+    //-----------------------------------------------------PROTECTED-----------------------------------------------------
+    protected function get_oRandomization() {
         $class_rand = 'Randomization_' . $this->oVisit->type;
         if (class_exists($class_rand)) {
             $this->oRandomization = new $class_rand($this->oVisit);
@@ -181,8 +182,6 @@ class Output {
             $this->oRandomization->update();
         }
     }
-
-//-----------------------------------------------------PROTECTED-----------------------------------------------------
     protected function get_label($value, $type) {
         foreach (self::${$type . '_array'} as $element) {
             if ($element[0] . '' == $value . '') {
