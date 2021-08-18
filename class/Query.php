@@ -3,8 +3,9 @@
 class Query {
     private $id_paz = 0;
     private $id_visita = 0;
-    private $sql = '';
-    private $params = [];
+    protected $sql = '';
+    protected $params = [];
+    protected $has_issue = false;
     public $is_blocking = false;
     public $description = '';
     public $action = '';
@@ -33,6 +34,7 @@ class Query {
     protected function set_by_row($row) {
         $this->description = $row['description'];
         $this->action = $row['action'];
+        $this->has_issue = true;
     }
 
     //-----------------------------------------------------CONSTRUCT & INTERFACE METHODS
@@ -46,7 +48,7 @@ class Query {
         $rows = Database::read($this->sql, $this->params);
         if (count($rows) > 0) {
             $this->set_by_row($rows[0]);
-            return true;
+            return $this->has_issue;
         }
         return false;
     }

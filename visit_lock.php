@@ -159,19 +159,18 @@ if (count($oQueries)) {
     $trs = '';
     $tds = '';
     $trs .= set_table_title(strtoupper(Language::find('query')), 3);
-    $tds .= HTML::set_td(Language::find('type'), '', true);
-    $tds .= HTML::set_td(Language::find('description'), '', true);
-    $tds .= HTML::set_td('', '', true);
     foreach ($oQueries as $oQuery) {
         if ($oQuery->is_blocking) {
             $is_error = true;
         }
         $tds = '';
-        $tds .= HTML::set_td(set_error_warning_icon($oQuery->is_blocking));
-        $tds .= HTML::set_td($oDefinition->description);
-        $tds .= HTML::set_td($oDefinition->action);
+        $tds .= HTML::set_td(set_error_warning_icon($oQuery->is_blocking), '', false, '', 'width: 5px;');
+        $tds .= HTML::set_td($oQuery->description);
+        $tds .= HTML::set_td($oQuery->action);
         $trs .= HTML::set_tr($tds);
     }
+    $html .= HTML::set_table($trs);
+    $html .= HTML::BR;
 }
 
 
