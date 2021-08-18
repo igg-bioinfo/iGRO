@@ -75,6 +75,30 @@ function set_form_buttons($oParents) {
 }
 
 
+//-----------------------------------QUERIES
+function set_error_warning_icon($is_error, $size = 2) {
+    return Icon::set($is_error ? 'close' : 'exclamation-triangle', $size, 'testo' . ($is_error ? 'rosso' : 'arancio'));
+}
+
+function set_query_block() {
+    global $oVisit, $is_visit_locked;
+    $trs = '';
+    if ($is_visit_locked) {
+        $oQueries = Query::get_all($oVisit);
+        foreach ($oQueries as $oQuery) {
+            $tds = '';
+            $tds .= HTML::set_td(set_error_warning_icon($oQuery->is_blocking));
+            $tds .= HTML::set_td($oQuery->description);
+            $trs .= HTML::set_tr($tds);
+        }
+        if ($trs != '') {
+            $trs = set_group('auto_check', $group) . $trs;
+        }
+    }
+    return $trs;
+}
+
+
 //-----------------------------------CONFIRM
 function set_confirm_button($type, $is_to_confirm) {
     global $oVisit, $is_admin, $is_investigator, $can_be_locked, $can_be_unlocked;

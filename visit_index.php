@@ -125,6 +125,7 @@ foreach ($oForms as $oForm) {
 }
 
 $trs .= $trs_opt;
+$trs .= set_query_block();
 $trs .= set_confirm_row();
 $trs .= set_unlockstatus_row();
 if ($is_admin && Config::ADMIN_CHECK) {
