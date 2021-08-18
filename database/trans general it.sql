@@ -132,7 +132,7 @@ INSERT INTO language_translation (label_text, languageiso, area_text, `translati
 INSERT INTO language_translation (label_text, languageiso, area_text, `translation`)VALUES('weeks', 'it', 'general', 'Settimane');
 INSERT INTO language_translation (label_text, languageiso, area_text, `translation`)VALUES('father', 'it', 'general', 'Padre');
 INSERT INTO language_translation (label_text, languageiso, area_text, `translation`)VALUES('mother', 'it', 'general', 'Madre');
-
+INSERT INTO language_translation (label_text, languageiso, area_text, translation) SELECT 'arm', 'it', 'general', 'Braccio';
 
 
 

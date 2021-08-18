@@ -3,6 +3,7 @@
 //--------------------------------VARIABLES
 $trs = '';
 $cols = [];
+$has_arm = class_exists('Randomization_' . Config::RAND_CLASS);
 
 
 //--------------------------------PATIENTS SELECT
@@ -25,6 +26,7 @@ $thead = HTML::set_tr(
     HTML::set_td(Language::find('export_code'), '', true) .
     HTML::set_td(Language::find('diagnosis'), '', true) .
     HTML::set_td(Language::find('age'), '', true) .
+    ($has_arm ? HTML::set_td(Language::find('arm'), '', true) : '').
     HTML::set_td(Language::find('ongoing'), '', true) .
     HTML::set_td('', '', true), true
 );
@@ -34,12 +36,14 @@ foreach ($oPatients as $oPaz) {
     $button_common .= HTML::set_button(Icon::set_info().Language::find('patient_index'), '', URL::create_url('patient_index'));
     $bgcolor = !$oPaz->is_discontinued() && !$oPaz->has_visits() ? 'fff3cd' : ($oPaz->has_visits_not_confirmed() ? 'FFA79C' : 'd4edda');
     $button_common .= HTML::set_button(Icon::set_list().Language::find('visits').' ('.$oPaz->visits_confirmed.'/'.$oPaz->visits.')', '', URL::create_url('visits'), '', '', '', $bgcolor);
+    $oRand = $has_arm ? Randomization::get_by_paz($oPaz->id) : NEW Randomization(NULL);
     //ROWS
     $trs .= HTML::set_tr(
         HTML::set_td($oPaz->patient_id) .
         HTML::set_td($oPaz->export_id) .
         HTML::set_td($oPaz->dia_short) .
         HTML::set_td($oPaz->get_age(). ' '.Language::find('years') ) .
+        ($has_arm ? HTML::set_td($oRand->arm_text) : '').
         HTML::set_td(Icon::set_checker(!$oPaz->is_discontinued()) . HTML::set_spaces(2) . Date::object_to_screen($oPaz->date_end), '', false, '', 'text-align: center; ') .
         HTML::set_td($button_common) 
     );
