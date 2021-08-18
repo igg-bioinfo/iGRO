@@ -52,7 +52,7 @@ if (File::$encrypted_min_link_life != 0 && $minutes > File::$encrypted_min_link_
 
 //--------------------------------------------GET FILE
 $oFile = NULL;
-$sql = "SELECT * FROM FILE_ENCRYPTED WHERE id_file = ? AND file_encrypted_type = ?; ";
+$sql = "SELECT * FROM file_encrypted WHERE id_file = ? AND file_encrypted_type = ?; ";
 $params = [$file_id, File::$encrypted_type];
 $file = Database::read($sql, $params);
 if (count($file) > 0) {

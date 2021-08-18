@@ -153,7 +153,29 @@ $html .= HTML::set_table($trs);
 $html .= HTML::BR;
 
 
-//--------------------------------CONFIRM / UNLOCK / Admin CHECK BUTTON
+//--------------------------------------QUERIES
+$oQueries = Query::get_all($oVisit);
+if (count($oQueries)) {
+    $trs = '';
+    $tds = '';
+    $trs .= set_table_title(strtoupper(Language::find('query')), 3);
+    $tds .= HTML::set_td(Language::find('type'), '', true);
+    $tds .= HTML::set_td(Language::find('description'), '', true);
+    $tds .= HTML::set_td('', '', true);
+    foreach ($oQueries as $oQuery) {
+        if ($oQuery->is_blocking) {
+            $is_error = true;
+        }
+        $tds = '';
+        $tds .= HTML::set_td(set_error_warning_icon($oQuery->is_blocking));
+        $tds .= HTML::set_td($oDefinition->description);
+        $tds .= HTML::set_td($oDefinition->action);
+        $trs .= HTML::set_tr($tds);
+    }
+}
+
+
+//--------------------------------CONFIRM / UNLOCK / ADMIN CHECK BUTTON
 $html .= HTML::BR;
 if (!$is_completed) {
     //HTML::$error_text = "BEFORE CONFIRMING THE VISIT YOU HAVE TO COMPLETE ALL THE STUDIES INVOLVED";

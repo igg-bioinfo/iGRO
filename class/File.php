@@ -79,7 +79,7 @@ class File {
 
     public function delete() {
         if (self::$is_encrypted) {
-            $sql = "DELETE FROM FILE_ENCRYPTED WHERE id_file = ? AND file_encrypted_type = ?; ";
+            $sql = "DELETE FROM file_encrypted WHERE id_file = ? AND file_encrypted_type = ?; ";
             $params = [$this->id, File::$encrypted_type];
             Database::edit($sql, $params);
         }
@@ -161,7 +161,7 @@ class File {
     }
 
     private function save_encrypted_file() {
-        $sql = "INSERT INTO FILE_ENCRYPTED (id_file, file_name, file_encrypted_type) VALUES (?, ?, ?); ";
+        $sql = "INSERT INTO file_encrypted (id_file, file_name, file_encrypted_type) VALUES (?, ?, ?); ";
         $params = [$this->id, $this->filename, File::$encrypted_type];
         Database::edit($sql, $params);
         return true;
