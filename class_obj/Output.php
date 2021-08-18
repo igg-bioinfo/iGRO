@@ -178,7 +178,7 @@ class Output {
         $class_rand = 'Randomization_' . $this->oVisit->type;
         if (class_exists($class_rand)) {
             $this->oRandomization = new $class_rand($this->oVisit);
-            $this->oRandomization->get(true);
+            $this->oRandomization->get();
             $this->oRandomization->update();
         }
     }
