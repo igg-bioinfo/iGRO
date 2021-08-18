@@ -158,7 +158,7 @@ $oQueries = Query::get_all($oVisit);
 if (count($oQueries)) {
     $trs = '';
     $tds = '';
-    $trs .= set_table_title(strtoupper(Language::find('query')), 3);
+    $trs .= set_table_title(strtoupper(Language::find('auto_check')), 3);
     foreach ($oQueries as $oQuery) {
         if ($oQuery->is_blocking) {
             $is_error = true;

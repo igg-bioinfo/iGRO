@@ -1,8 +1,8 @@
 <?php
 
 class Query {
-    private $id_paz = 0;
-    private $id_visita = 0;
+    protected $id_paz = 0;
+    protected $id_visita = 0;
     protected $sql = '';
     protected $params = [];
     protected $has_issue = false;
