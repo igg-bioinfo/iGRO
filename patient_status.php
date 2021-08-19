@@ -11,7 +11,7 @@ $is_discontinued = $oPatient->is_discontinued();
 $is_investigator = $oArea->id == Area::$ID_INVESTIGATOR;
 $has_visit_not_confirmed = $oPatient->has_visits_not_confirmed();
 $is_view = !$is_investigator || $has_visit_not_confirmed;
-$can_save_note = !$has_visit_not_confirmed || $is_discontinued;
+$can_save_note = ($is_investigator && !$has_visit_not_confirmed) || $is_discontinued;
 $oAuthor = new User();
 $oAuthor->get_by_id($oPatient->end_author);
 $oLastVisit = new Visit();
@@ -70,9 +70,9 @@ $html .= HTML::set_form($form, 'form1', '');
 
 
 //--------------------------------BUTTONS
-if (!$has_visit_not_confirmed || $is_discontinued) {
+if (($is_investigator && !$has_visit_not_confirmed) || $is_discontinued) {
     $html .= HTML::set_button(Icon::set_save() . Language::find('save'), "$('#act').val('save'); page_validation('form1');", '', '', 'float:right;');
-    if ($is_investigator && !$has_visit_not_confirmed && $is_discontinued) {
+    if ($is_investigator && $is_discontinued) {
         $text = str_replace('{0}', '<b>'.Language::find('end_form').'</b>', Language::find('delete_confirmation'));
         $html .= Form_input::createPopup('disc_delete', Language::find('delete').' '.Language::find('end_form'), $text, Language::find('delete'), 
             "$('#act').val('delete'); page_validation('form1');", Language::find('no'));

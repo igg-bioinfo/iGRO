@@ -80,7 +80,7 @@ if ($oPatient->is_discontinued()) {
     }
 } else {
     $status_message = Language::find('patient_followed');
-    if (!$oPatient->has_visits_not_confirmed()) {
+    if ($is_investigator && !$oPatient->has_visits_not_confirmed()) {
         $status_message .= HTML::set_button(Icon::set_edit().Language::find('end_form'), '', URL::create_url('patient_status'));
     }
 }
