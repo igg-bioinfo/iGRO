@@ -12,7 +12,7 @@ if ($post != '') {
     $_SESSION[URL::$prefix . "iso"] = $post;
     $oUser->language = $post;
     $oUser->update();
-    URL::redirect('patients');
+    URL::redirect($oArea->id == Area::$ID_SUPERADMIN ? 'home' : 'patients');
 }
 
 
@@ -29,6 +29,10 @@ $html .= HTML::set_button(Icon::set_save() . Language::find('modify'), "page_val
 //--------------------------------HTML
 HTML::$title = Language::find('language');
 URL::changeable_vars_reset();
-$html .= HTML::set_button(Icon::set_back() . Language::find('patients'), '', URL::create_url('patients'), '', 'float: left;');
+if ($oArea->id == Area::$ID_SUPERADMIN) {
+    $html .= HTML::set_button(Icon::set_back() . Language::find('home'), '', URL::create_url('home'), '', 'float: left;');
+} else {
+    $html .= HTML::set_button(Icon::set_back() . Language::find('patients'), '', URL::create_url('patients'), '', 'float: left;');
+}
 $html .= HTML::BR;
 HTML::print_html($html);
