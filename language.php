@@ -12,6 +12,7 @@ if ($post != '') {
     $_SESSION[URL::$prefix . "iso"] = $post;
     $oUser->language = $post;
     $oUser->update();
+    $_SESSION[URL::$prefix . 'user'] = $oUser;
     URL::redirect($oArea->id == Area::$ID_SUPERADMIN ? 'home' : 'patients');
 }
 
