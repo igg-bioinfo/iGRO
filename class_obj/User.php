@@ -128,15 +128,15 @@ class User {
     }
 
     function create() {
-        $params = [$this->name, $this->surname, $this->email, $this->phone, $this->role, $this->id_center, 1];
-        $sql = "INSERT INTO user (name, surname, email, phone, role, id_center, enabled) 
-            VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $params = [$this->name, $this->surname, $this->email, $this->phone, $this->role, $this->id_center, $this->language, 1];
+        $sql = "INSERT INTO user (name, surname, email, phone, role, id_center, language, enabled) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         Database::edit($sql, $params);
     }
 
     function update() {
-        $params = [$this->name, $this->surname, $this->email, $this->phone, $this->role, $this->id_center, $this->id];
-        $sql = "UPDATE user SET name = ?, surname = ?, email = ?, phone = ?, role = ?, id_center = ?  WHERE id_user = ? ";
+        $params = [$this->name, $this->surname, $this->email, $this->phone, $this->role, $this->id_center, $this->language, $this->id];
+        $sql = "UPDATE user SET name = ?, surname = ?, email = ?, phone = ?, role = ?, id_center = ?, language = ?  WHERE id_user = ? ";
         Database::edit($sql, $params);
     }
 
