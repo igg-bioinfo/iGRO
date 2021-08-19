@@ -1,4 +1,4 @@
 INSERT INTO diagnosis (dia_name,dia_short,group_name,orderby) VALUES
-	 ('GHD','GHD','iGro',1),
-	 ('SGA','SGA','iGro',2),
-	 ('Sindrome di Turner','Turner','iGro',3);
+	 ('Dia TEST1','Dia TEST1','gruppo_dia',1),
+	 ('Dia TEST2','Dia TEST2','gruppo_dia',2),
+	 ('Dia TEST3','Dia TEST3','gruppo_dia',3);

@@ -17,6 +17,9 @@ if ($act != '') {
         $oEditUsr->phone = Security::sanitize(INPUT_POST, "phone");
         $oEditUsr->role = Security::sanitize(INPUT_POST, "role");
         $oEditUsr->id_center = Security::sanitize(INPUT_POST, "id_center") == '' ? 0 : Security::sanitize(INPUT_POST, "id_center");
+        if ($oEditUsr->language.'' == '') {
+            $oEditUsr->language = Config::LANGUAGEISO; 
+        }
         if ($oEditUsr->id == 0) {
             $oEditUsr->create();
         } else {

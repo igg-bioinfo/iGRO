@@ -15,6 +15,7 @@ class User {
     public $center = NULL;
     public $oAreas = [];
     public $oCenter = NULL;
+    public $language = NULL;
 
     //-----------------------------------------------------CONSTRUCT & INTERFACE METHODS
     public function __construct($ip_address = '', $row = NULL, $oAccessedArea = NULL) {
@@ -46,6 +47,7 @@ class User {
             $this->oCenter = new Center();
             $this->oCenter->get_by_id($user["id_center"]);
         }
+        $this->language = $user["language"];
     }
 
     //-----------------------------------------------------PUBLIC
@@ -109,7 +111,7 @@ class User {
     }
     
     public static function get_table($no_center = false) {
-        $sql = " ( SELECT id_user, name, surname, email, phone, role, password, pswdate, enabled, 
+        $sql = " ( SELECT id_user, name, surname, email, phone, role, password, pswdate, enabled, language, 
             I.id_center".($no_center ? "" : ", center_code, hospital, id_pi, pi_name, pi_surname")."  
             FROM user I
             ".($no_center ? "" : "LEFT OUTER JOIN ".Center::get_table()." C ON C.id_center = I.id_center ")." 

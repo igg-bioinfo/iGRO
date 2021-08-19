@@ -62,5 +62,5 @@ HTML::set_default_css_js();
 //--------------------------------HTML
 $oMenu = new Menu();
 $error_id = Security::sanitize(INPUT_GET, 'err') . '' != '' ? Security::sanitize(INPUT_GET, 'err') : URL::get_error();
-//Message::write($error_id);
+Message::write($error_id);
 HTML::print_html($html);

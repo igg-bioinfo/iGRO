@@ -21,6 +21,9 @@ class Language {
             self::$name = $language["translated"];
             self::$is_right_dir = $language["is_right"] . '' == '1';
             self::add_area('general');
+            if (!isset($_SESSION[URL::$prefix . "iso"])) {
+                $_SESSION[URL::$prefix . "iso"] = self::$iso;
+            }
         }
     }
 

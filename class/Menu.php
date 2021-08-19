@@ -71,8 +71,11 @@ class Menu {
 
     //----------------------------------------------MENU FUNCTIONS----------------------------------------------
     protected function set_menu_user() {
+        URL::changeable_vars_reset();
         $this->add_menu_main(self::MENU_USER, $this->oUser->name);
+        $this->add_menu(URL::create_url("language", $this->oArea->url, true), Language::find('language'), self::MENU_USER);
         $this->add_menu(URL::create_url("logout", "", true), Language::find('logout'), self::MENU_USER);
+        URL::changeable_vars_from_onload_vars();
     }
 
     protected function set_menu_tools() {
@@ -83,7 +86,6 @@ class Menu {
         } else if (in_array($this->oArea->id, [Area::$ID_INVESTIGATOR])) {
             $this->add_menu(URL::create_url("exporting_data", $this->oArea->url, true), 'Data export', self::MENU_TOOLS);
         }
-
         URL::changeable_vars_from_onload_vars();
     }
 

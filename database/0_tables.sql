@@ -253,6 +253,7 @@ CREATE TABLE `user` (
   `enabled` smallint(6) NOT NULL DEFAULT 1,
   `password` varchar(200) DEFAULT NULL,
   `pswdate` datetime DEFAULT NULL,
+  `language` varchar(5) DEFAULT NULL,
   PRIMARY KEY (`id_user`),
   KEY `contact_id_med_IDX` (`id_user`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;

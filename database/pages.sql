@@ -46,6 +46,9 @@ INSERT INTO page_template (file_name,page_url,id_area,need_login) VALUES
 	 ('visit_output.php','output',2,1);
 	 
 INSERT INTO page_template (file_name, page_url, id_area, need_login)VALUES('area_superadmin/translation_list.php', 'translations', 3, 1);
+INSERT INTO page_template (file_name, page_url, id_area, need_login)VALUES('language.php', 'language', 1, 1);
+INSERT INTO page_template (file_name, page_url, id_area, need_login)VALUES('language.php', 'language', 2, 1);
+INSERT INTO page_template (file_name, page_url, id_area, need_login)VALUES('language.php', 'language', 3, 1);
 	END; 
 	
 	

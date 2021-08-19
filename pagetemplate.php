@@ -92,7 +92,7 @@ if ($page_url == 'logout') {
 
 
 //--------------------------------PAGE FILE
-Language::set(isset($_SESSION[URL::$prefix . "iso"]) ? $_SESSION[URL::$prefix . "iso"] : Config::LANGUAGEISO);
+Language::set(isset($_SESSION[URL::$prefix . "iso"]) ? $_SESSION[URL::$prefix . "iso"] : ($oUser->is_logged() ? $oUser->language : Config::LANGUAGEISO));
 $sql = "SELECT DISTINCT PT.file_name, PT.need_login
     FROM page_template PT
     WHERE PT.id_area = ? AND PT.page_url = ?

@@ -20,8 +20,24 @@ if ($is_area_allowed) {
 }
 
 
+//--------------------------------SPECIAL FUNCTIONS
+function special_draw($oField) {
+    $has_drawn = false;
+    switch($oField->name) {
+    }
+    return $has_drawn;
+}
 
-//--------------------------------FUNCTIONS
+function special_trans($oField) {
+    $trans = '';
+    switch($oField->name) {
+        default:
+            $trans = Language::find($oField->name);
+            break;
+    }
+    return $trans;
+}
+
 function special_js($oField, $js) {
     switch($oField->name) {
         case 'informed_consent':
@@ -34,16 +50,19 @@ function special_js($oField, $js) {
     return $js;
 }
 
+
+//--------------------------------FUNCTIONS
 function draw_criteria($oCriteria) {
     if (count($oCriteria->oFields) == 0) { return; }
     global $form, $is_view;
     $form .= HTML::set_bootstrap_cell(HTML::set_paragraph($oCriteria->get_title()), 12, true, '', 'text-align: center;');
     foreach($oCriteria->oFields as $oField) {
         $oField = $oCriteria->get_valued_field($oField->name);
+        if (special_draw($oField)) { continue; }
         switch($oField->type){
             case Field::TYPE_BOOL:
-                $js = JS::call_func('check_radio', [$oField->name]);
-                $form .= Form_input::createLabel($oField->name, Language::find($oField->name));
+                $js = $oField->required == '1' ? JS::call_func('check_radio', [$oField->name]) : '';
+                $form .= Form_input::createLabel($oField->name, special_trans($oField));
                 $form .= Form_input::createRadio($oField->name, Language::find('yes'), 
                     $oField->value, 1, 3, false, special_js($oField, $js), $is_view);
                 $form .= Form_input::createRadio($oField->name, Language::find('no'), 
@@ -51,8 +70,18 @@ function draw_criteria($oCriteria) {
                 break;
             case Field::TYPE_DATE:
                 $js = JS::call_func('check_date', [$oField->name]);
-                $form .= Form_input::createDatePicker($oField->name, Language::find($oField->name), 
+                $form .= Form_input::createDatePicker($oField->name, special_trans($oField), 
                     $oField->value, 4, true, special_js($oField, $js), $is_view);
+                break;
+            case Field::TYPE_STRING:
+                $js = JS::call_func('check_text', [$oField->name, '', '', '', $oField->required == '1']);
+                $form .= Form_input::createInputText($oField->name, special_trans($oField), 
+                    $oField->value, 4, true, special_js($oField, $js), $is_view);
+                break;
+            case Field::TYPE_INT:
+                $js = JS::call_func('check_integer', [$oField->name, '', '', $oField->required == '1']);
+                $form .= Form_input::createInputText($oField->name, special_trans($oField), 
+                    $oField->value, 2, true, special_js($oField, $js), $is_view);
                 break;
         }
     }

@@ -35,6 +35,8 @@ class Config {
     const LANGUAGEISO = 'it';
     const EMAIL_ADMIN = '';
     const ADMIN_CHECK = false;
+    const RAND_CLASS = 'baseline'; //CLASS IN class_overrides: Randomization_baseline
+    const QUERY_CLASSES = ['test']; //CLASSES IN class_overrides: Query_test
     const INVESTIGATOR_CAN_UNLOCK_VISIT = false;
     const INVESTIGATOR_CAN_DELETE_VISIT = false;
     const PROJECT_CLOSED = false;

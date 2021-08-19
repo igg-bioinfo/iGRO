@@ -51,10 +51,9 @@ class Randomization {
         $params = [$id_paz];
         $rows = Database::read($sql, $params);
         $class_rand = 'Randomization_' . Config::RAND_CLASS;
-        $oRand = NULL;
-        foreach ($rows as $row) {
-            $oRand = new $class_rand(NULL, $row);
-            $oRand->set_by_row($row);
+        $oRand = NEW Randomization(NULL);
+        if(count($rows)) {
+            $oRand = new $class_rand(NULL, $rows[0]);
         }
         return $oRand;
     }
