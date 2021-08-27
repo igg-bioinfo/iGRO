@@ -55,10 +55,10 @@ class Date {
 
     static function date_difference_in_days($first_date, $last_date, $is_absolute = false) {
         if(!is_a($first_date, 'DateTime')) {
-            $date = Date::default_to_object($first_date);
+            $first_date = Date::default_to_object($first_date);
         }
         if(!is_a($last_date, 'DateTime')) {
-            $date = Date::default_to_object($first_date);
+            $last_date = Date::default_to_object($last_date);
         }
         $date_interval = date_diff($first_date, $last_date, $is_absolute);
         return $date_interval->format('%a');
@@ -66,10 +66,10 @@ class Date {
 
     static function date_difference($first_date, $last_date, $format, $is_absolute = false) {
         if(!is_a($first_date, 'DateTime')) {
-            $date = Date::default_to_object($first_date);
+            $first_date = Date::default_to_object($first_date);
         }
         if(!is_a($last_date, 'DateTime')) {
-            $date = Date::default_to_object($first_date);
+            $last_date = Date::default_to_object($last_date);
         }
         $result = 0;
         switch ($format) {
