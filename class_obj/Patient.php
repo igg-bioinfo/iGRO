@@ -209,9 +209,9 @@ class Patient {
         $last_update = Date::default_to_object($this->ludati);
         $diff = $last_update->diff($date);
         if ($diff->invert) { //if the difference is negative
-            return round($this->age_base - ($diff->days / 365.25), 1);
+            return abs(round($this->age_base - ($diff->days / 365.25), 1));
         } else {
-            return round($this->age_base + ($diff->days / 365.25), 1);
+            return abs(round($this->age_base + ($diff->days / 365.25), 1));
         }
     }
 
