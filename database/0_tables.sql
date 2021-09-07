@@ -175,7 +175,7 @@ CREATE TABLE `patient` (
   `date_end` datetime DEFAULT NULL,
   `author` bigint(20) NOT NULL,
   `ludati` datetime NOT NULL,
-  `age_base` decimal(10,0) DEFAULT NULL,
+  `age_base` float DEFAULT NULL,
   `id_end_reason` bigint(20) DEFAULT NULL,
   `end_specify` varchar(1000) DEFAULT NULL,
   `end_author` bigint(20) DEFAULT NULL,

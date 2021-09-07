@@ -125,7 +125,7 @@ class Patient {
                 first_name, last_name, country_birth, country_birth_other, date_birth, 
                 author, ludati) VALUES (
                 ?, ?, ?, ?, ?, ?, 
-                DATEDIFF(NOW(), ?)/365.25, ?, ?, ?, ?, ?, ?,
+                ROUND(DATEDIFF(NOW(), ?)/365.25, 1), ?, ?, ?, ?, ?, ?,
                 ?, ?, ?, ?, ?, 
                 ?, NOW());', $params, true);
         }
@@ -140,7 +140,7 @@ class Patient {
                 $oUser->id, $this->id];
             //age_base is calculated by the sql insert or update
             Database::edit('UPDATE patient SET gender = ?, date_onset = ?, date_diagnosis = ?, id_diagnosis = ?, 
-                age_base = DATEDIFF(NOW(), ?)/365.25, date_end = ?, id_end_reason = ?, ethnicity = ?, ethnicity_other = ?, date_first_visit = ?,
+                age_base = ROUND(DATEDIFF(NOW(), ?)/365.25, 1), date_end = ?, id_end_reason = ?, ethnicity = ?, ethnicity_other = ?, date_first_visit = ?,
                 first_name = ?, last_name = ?, country_birth = ?, country_birth_other = ?, date_birth = ?, 
                 author = ?, ludati = NOW() WHERE id_paz = ?;', $params, '', false);
         }
