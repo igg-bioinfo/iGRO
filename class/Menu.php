@@ -104,6 +104,9 @@ class Menu {
         }
         $this->add_menu(URL::create_url("visits", $this->oArea->url, true), Language::find('visits'), self::MENU_PATIENT);
         $oVisits = Visit::get_all_by_id_paz($this->oPatient->id);
+        if (count($oVisits) > 0) {
+            Language::add_area('visit');
+        }
         foreach ($oVisits as $oVis) {
             URL::changeable_var_add('vid', $oVis->id);
             $this->add_menu(URL::create_url("visit_index", $this->oArea->url, true), Date::default_to_screen($oVis->date) . ' - ' . $oVis->type_text, self::MENU_PATIENT);

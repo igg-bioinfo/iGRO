@@ -449,8 +449,12 @@ abstract class Abstract_CRF_page {
 
         // show back button only for pages greater than 1
         if ($this->page_number > 1) {
-            $button_label = Icon::set_save() . self::$BUTTON_LABEL_PREV;
-            $this->html .= HTML::set_button($button_label, "document.getElementById('button_nav').value='back'; page_validation('form1');");
+            //$button_label = Icon::set_save() . self::$BUTTON_LABEL_PREV;
+            //$this->html .= HTML::set_button($button_label, "document.getElementById('button_nav').value='back'; page_validation('form1');");
+            URL::changeable_vars_reset_except(['pid', 'vid', 'fid']);
+            URL::changeable_var_add('page', $this->page_number - 1);
+            URL::changeable_var_add('act', 'edit');
+            $this->html .= HTML::set_button(Icon::set_save() . self::$BUTTON_LABEL_PREV, '', URL::create_url(Globals::FORM_URL, ''));
         }
 
         // save/next button is always present
