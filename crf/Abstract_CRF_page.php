@@ -454,7 +454,7 @@ abstract class Abstract_CRF_page {
             URL::changeable_vars_reset_except(['pid', 'vid', 'fid']);
             URL::changeable_var_add('page', $this->page_number - 1);
             URL::changeable_var_add('act', 'edit');
-            $this->html .= HTML::set_button(Icon::set_save() . self::$BUTTON_LABEL_PREV, '', URL::create_url(Globals::FORM_URL, ''));
+            $this->html .= HTML::set_button(Icon::set_back() . self::$BUTTON_LABEL_PREV, '', URL::create_url(Globals::FORM_URL, ''));
         }
 
         // save/next button is always present
