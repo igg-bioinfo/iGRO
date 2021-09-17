@@ -44,7 +44,7 @@ foreach ($oPatients as $oPaz) {
         HTML::set_td($oPaz->dia_short) .
         HTML::set_td($oPaz->get_age(). ' '.Language::find('years') ) .
         ($has_arm ? HTML::set_td($oRand->arm_text) : '').
-        HTML::set_td(Icon::set_checker(!$oPaz->is_discontinued()) . HTML::set_spaces(2) . Date::object_to_screen($oPaz->date_end), '', false, '', 'text-align: center; ') .
+        HTML::set_td(Icon::set_checker(!$oPaz->is_discontinued()) . HTML::set_spaces(2) . Date::default_to_screen($oPaz->date_end), '', false, '', 'text-align: center; ') .
         HTML::set_td($button_common) 
     );
 }
