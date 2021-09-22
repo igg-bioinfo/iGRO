@@ -157,10 +157,10 @@ class Visit {
     }
 
     //-----------------------------------------------------STATIC
-    static function get_all_by_id_paz($id_paz) {
+    static function get_all_by_id_paz($id_paz, $order = "VV.date_visit DESC, id_visita") {
         $params = [$id_paz];
         $sql = "SELECT VV.* FROM " . self::get_default_select() . " VV 
-            WHERE VV.id_paz = ? ORDER BY VV.date_visit DESC, id_visita ";
+            WHERE VV.id_paz = ? ORDER BY ".$order;
         $visits = Database::read($sql, $params);
 
         // the code below will work correctly only with this specific sorting (date_visit, id_visita)

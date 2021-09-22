@@ -11,6 +11,7 @@ Language::add_area('visit');
 $oLastVisit = new Visit();
 $oLastVisit->get_last($oPatient->id);
 $has_criteria = Patient_criteria::has_paz($oPatient->id);
+$oVis = new Visit();
 
 
 //--------------------------------NEW VISIT
@@ -66,6 +67,29 @@ foreach ($oVisits as $oVis) {
         $buttons .= HTML::set_button(Icon::set_edit(). Language::find('modify'), '', URL::create_url('visit'));
     }
     $buttons .= HTML::set_button(Icon::set_list(). Language::find('forms'), '', URL::create_url('visit_index'));
+    $tds .= HTML::set_td($buttons);
+    $trs .= HTML::set_tr($tds);
+}
+$oVisits_new = Visit_type::get_all($oPatient->id, $oVis->id);
+$first_jumped = false;
+foreach ($oVisits_new as $oVis_new) {
+    if ($oVis_new->always_show || ($oVis->id !== 0 && !$first_jumped)) {
+        $first_jumped = true;
+        continue;
+    }
+
+    //------------VARIABLES
+    $start = Date::default_to_screen(Date::add_days($oPatient->date_first_visit, $oVis_new->day_lower));
+    $end = Date::default_to_screen(Date::add_days($oPatient->date_first_visit, $oVis_new->day_upper));
+
+    //-------------CELLS
+    $tds = '';
+    $tds .= HTML::set_td($start.' - '.$end);
+    $tds .= HTML::set_td(Language::find($oVis_new->name));
+    $tds .= HTML::set_td('-', '', false, '', 'text-align: center; ');
+
+    //-------------BUTTONS
+    $buttons = '';
     $tds .= HTML::set_td($buttons);
     $trs .= HTML::set_tr($tds);
 }
