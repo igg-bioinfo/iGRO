@@ -70,7 +70,7 @@ foreach ($oVisits as $oVis) {
     $tds .= HTML::set_td($buttons);
     $trs .= HTML::set_tr($tds);
 }
-$oVisits_new = Visit_type::get_all($oPatient->id, $oVis->id);
+$oVisits_new = $oPatient->is_discontinued() ? [] : Visit_type::get_all($oPatient->id, $oVis->id);
 $first_jumped = false;
 foreach ($oVisits_new as $oVis_new) {
     if ($oVis_new->always_show || ($oVis->id !== 0 && !$first_jumped)) {
