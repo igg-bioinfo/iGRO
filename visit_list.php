@@ -41,7 +41,7 @@ if ($oArea->id == Area::$ID_INVESTIGATOR) {
 
 
 //--------------------------------VISITS
-$oVisits = Visit::get_all_by_id_paz($oPatient->id);
+$oVisits = Visit::get_all_by_id_paz($oPatient->id, "VV.date_visit, id_visita");
 $thead = HTML::set_tr(
     HTML::set_td(Language::find('date'), '', true, '', 'width: 10px;') .
     HTML::set_td(Language::find('visit'), '', true, '', 'width: 5%;') .
