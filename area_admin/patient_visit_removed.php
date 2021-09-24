@@ -19,11 +19,11 @@ $thead = HTML::set_tr(
 foreach ($patients as $pt) {
     $oPt = json_decode($pt['patient_json']);
     $tds = '';
-    $tds .= HTML::set_td($oPt->patient_id);
-    $tds .= HTML::set_td($oPt->export_id);
-    $tds .= HTML::set_td($oPt->oDiagnosis->name_short);
+    $tds .= HTML::set_td(isset($oPt->patient_id) ? $oPt->patient_id : '-');
+    $tds .= HTML::set_td(isset($oPt->export_id) ? $oPt->export_id : '-');
+    $tds .= HTML::set_td(isset($oPt->dia_short) ? $oPt->dia_short : '-');
     $tds .= HTML::set_td($oPt->gender.'' === '1' ? Language::find('male') : ($oPt->gender.'' === '2'? Language::find('female') : Language::find('unknown')));
-    $tds .= HTML::set_td(Date::default_to_screen($oPt->ludati, true));
+    $tds .= HTML::set_td(Date::default_to_screen($pt['ludati'], true));
     $trs .= HTML::set_tr($tds);
 }
 $js = 'columnDefs: [ 
@@ -45,11 +45,11 @@ $thead = HTML::set_tr(
 foreach ($visits as $vt) {
     $oVt = json_decode($vt['visit_json']);
     $tds = '';
-    $tds .= HTML::set_td($oVt->patient_id);
-    $tds .= HTML::set_td($oVt->export_id);
-    $tds .= HTML::set_td($oVt->type_text);
+    $tds .= HTML::set_td(isset($oVt->patient_id) ? $oVt->patient_id : '-');
+    $tds .= HTML::set_td(isset($oVt->export_id) ? $oVt->export_id : '-');
+    $tds .= HTML::set_td(isset($oVt->type_text) ? $oVt->type_text : '-');
     $tds .= HTML::set_td(Date::default_to_screen($oVt->date));
-    $tds .= HTML::set_td(Date::default_to_screen($oVt->ludati, true));
+    $tds .= HTML::set_td(Date::default_to_screen($vt['ludati'], true));
     $trs .= HTML::set_tr($tds);
 }
 $js = 'columnDefs: [ 
