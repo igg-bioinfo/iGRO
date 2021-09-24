@@ -89,6 +89,7 @@ if ($post_save == SAVE_LOCK) {
     if (Security::sanitize(INPUT_POST, 'lock_reason') != '') {
         $oVisit->lock_reason = Security::sanitize(INPUT_POST, 'lock_reason');
     }
+    Query::save_all($oVisit);
     $oVisit->update_lock();
     $has_output = false;
     if ($oVisit->has_output) {
@@ -154,7 +155,7 @@ $html .= HTML::BR;
 
 
 //--------------------------------------QUERIES
-$oQueries = Query::get_all($oVisit);
+$oQueries = Query::get_all_by_visit($oVisit);
 if (count($oQueries)) {
     $trs = '';
     $tds = '';

@@ -328,4 +328,15 @@ CREATE TABLE `visit_randomization` (
   KEY `visit_randomization_id_random_IDX` (`id_random`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `query` (
+  `id_paz` bigint(20) NOT NULL,
+  `id_visita` bigint(20) NOT NULL,
+  `is_blocking` smallint(6) NOT NULL,
+  `description` text NOT NULL,
+  `action` text NOT NULL,
+  `query_class` varchar(200) NOT NULL,
+  `author` bigint(20) NOT NULL,
+  `ludati` datetime NOT NULL,
+  PRIMARY KEY (`id_paz`,`id_visita`,`query_class`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 END;

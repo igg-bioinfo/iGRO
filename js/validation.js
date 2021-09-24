@@ -153,7 +153,7 @@ function change_status(id, status, error) {
 
     // Neutral status, no borders drawn
     if (status === 0) {
-        status_border_class = status_error.length ? '' : 'basic';
+        status_border_class = status_error.length ? 'basic' : 'basic';
         $('#' + id).css('border-color', '');
         //if (!status_error.length) {
         $('#' + id).parent('.form-check-label').find('.radio_checkmark').css('border', '');

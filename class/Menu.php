@@ -82,10 +82,12 @@ class Menu {
         URL::changeable_vars_reset();
         $this->add_menu_main(self::MENU_TOOLS, Language::find('tools'));
         if ($this->oArea->id == Area::$ID_ADMIN) {
+            $this->add_menu(URL::create_url("users", $this->oArea->url, true), Language::find('users'), self::MENU_TOOLS);
             $this->add_menu(URL::create_url("removed", $this->oArea->url, true), 'Subjects / visits removed', self::MENU_TOOLS);
         } else if (in_array($this->oArea->id, [Area::$ID_INVESTIGATOR])) {
-            $this->add_menu(URL::create_url("exporting_data", $this->oArea->url, true), 'Data export', self::MENU_TOOLS);
+            //$this->add_menu(URL::create_url("exporting_data", $this->oArea->url, true), 'Data export', self::MENU_TOOLS);
         }
+        $this->add_menu(URL::create_url("query", $this->oArea->url, true), 'Queries', self::MENU_TOOLS);
         URL::changeable_vars_from_onload_vars();
     }
 

@@ -84,7 +84,7 @@ function set_query_block() {
     global $oVisit, $is_visit_locked;
     $trs = '';
     if ($is_visit_locked) {
-        $oQueries = Query::get_all($oVisit);
+        $oQueries = Query::get_all_by_visit($oVisit);
         foreach ($oQueries as $oQuery) {
             $tds = '';
             $tds .= HTML::set_td(set_error_warning_icon($oQuery->is_blocking));

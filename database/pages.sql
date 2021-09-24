@@ -43,7 +43,10 @@ INSERT INTO page_template (file_name,page_url,id_area,need_login) VALUES
 	 ('visit_lock.php','visit_lock',1,1),
 	 ('visit_lock.php','visit_lock',2,1),
 	 ('visit_output.php','output',1,1),
-	 ('visit_output.php','output',2,1);
+	 ('visit_output.php','output',2,1),
+	 ('visit_query.php','query',1,1),
+	 ('visit_query.php','query',2,1),
+	 ('area_admin/patient_visit_removed.php','removed',1,1);
 	 
 INSERT INTO page_template (file_name, page_url, id_area, need_login)VALUES('area_superadmin/translation_list.php', 'translations', 3, 1);
 INSERT INTO page_template (file_name, page_url, id_area, need_login)VALUES('language.php', 'language', 1, 1);

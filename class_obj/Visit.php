@@ -147,7 +147,9 @@ class Visit {
     }
 
     function delete($note = '') {
-        global $oUser;
+        global $oUser, $oPatient;
+        $this->patient_id = $oPatient->patient_id;
+        $this->export_id = $oPatient->export_id;
         if (isset($this->id) && $this->id != 0 && isset($oUser) && $oUser->id != 0) {
             $sql = "INSERT INTO visit_deleted (id_visita, note, visit_json, author, ludati) VALUES (?, ?, ?, ?, NOW());
                 DELETE FROM visit WHERE id_visita = ?; ";
