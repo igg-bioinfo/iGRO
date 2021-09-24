@@ -12,8 +12,9 @@ $patients = Database::read("SELECT * FROM patient_deleted ORDER BY ludati DESC "
 $thead = HTML::set_tr(
     HTML::set_td(Language::find('patient_code'), '', true, '', 'width: 5%;') .
     HTML::set_td(Language::find('export_code'), '', true, '', 'width: 5%;') .
-    HTML::set_td(Language::find('diagnosis'), '', true, '', 'width: 5%;') .
     HTML::set_td(Language::find('sex'), '', true, '', 'width: 5%;').
+    HTML::set_td(Language::find('diagnosis'), '', true, '', 'width: 5%;') .
+    HTML::set_td(Language::find('visit_first'), '', true, '', 'width: 5%;') .
     HTML::set_td('', '', true, '', 'width: 5%;'), true
 );
 foreach ($patients as $pt) {
@@ -21,12 +22,14 @@ foreach ($patients as $pt) {
     $tds = '';
     $tds .= HTML::set_td(isset($oPt->patient_id) ? $oPt->patient_id : '-');
     $tds .= HTML::set_td(isset($oPt->export_id) ? $oPt->export_id : '-');
-    $tds .= HTML::set_td(isset($oPt->dia_short) ? $oPt->dia_short : '-');
     $tds .= HTML::set_td($oPt->gender.'' === '1' ? Language::find('male') : ($oPt->gender.'' === '2'? Language::find('female') : Language::find('unknown')));
+    $tds .= HTML::set_td(isset($oPt->dia_short) ? $oPt->dia_short : '-');
+    $tds .= HTML::set_td(Date::default_to_screen($oPt->date_first_visit));
     $tds .= HTML::set_td(Date::default_to_screen($pt['ludati'], true));
     $trs .= HTML::set_tr($tds);
 }
 $js = 'columnDefs: [ 
+        { type: "date-dd-mmm-yyyy", targets: 3 }, 
         { width: "5px", targets: [] }, 
         { orderable: false, targets: [] } 
     ], '.JS::set_responsive_lang().' ';
@@ -34,6 +37,7 @@ $html .= HTML::set_table_responsive($thead . HTML::set_tbody($trs), 'table_pts',
 
 
 //--------------------------------VISIT
+$trs = '';
 $visits = Database::read("SELECT * FROM visit_deleted ORDER BY ludati DESC ", []);
 $thead = HTML::set_tr(
     HTML::set_td(Language::find('patient_code'), '', true, '', 'width: 5%;') .
