@@ -141,7 +141,7 @@ class Output {
             $this->ludati = $row['ludati'];
             $extra_obj = json_decode($row['extra_fields']);
             foreach ($this->extra_fields as $extra_field) {
-                $this->{$extra_field} = isset($extra_obj->{$extra_field}) ? (int) $extra_obj->{$extra_field} : NULL;
+                $this->{$extra_field} = isset($extra_obj->{$extra_field}) ? (is_numeric($extra_obj->{$extra_field}) ? (int) $extra_obj->{$extra_field} : $extra_obj->{$extra_field}) : NULL;
             }
         }
     }
