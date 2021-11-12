@@ -34,6 +34,9 @@ class Config {
     const PW_IV = '';
     const LANGUAGEISO = 'it';
     const EMAIL_ADMIN = '';
+    const EMAIL_SMTP = ''; //IF THE SMTP SERVER HOST IS NOT SPECIFIED, IS NOT USED
+    const EMAIL_SMTP_PW = '';
+    const EMAIL_SMTP_PORT = 587; //SMTPS 465, TLS 587
     const ADMIN_CHECK = false;
     const RAND_CLASS = 'baseline'; //CLASS IN class_overrides: Randomization_baseline
     const QUERY_CLASSES = ['test']; //CLASSES IN class_overrides: Query_test

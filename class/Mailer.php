@@ -20,20 +20,22 @@ class Mailer {
     //-----------------------------------------------------CONSTRUCT
     public function __construct() {
         include_once Globals::$PHYSICAL_PATH . Globals::$PATH_RELATIVE . 'PHPMailer'.Config::PATH_SEP.'src'.Config::PATH_SEP.'PHPMailer.php';
+        include_once Globals::$PHYSICAL_PATH . Globals::$PATH_RELATIVE . 'PHPMailer'.Config::PATH_SEP.'src'.Config::PATH_SEP.'SMTP.php';
+        include_once Globals::$PHYSICAL_PATH . Globals::$PATH_RELATIVE . 'PHPMailer'.Config::PATH_SEP.'src'.Config::PATH_SEP.'Exception.php';
         $this->mailer = new PHPMailer\PHPMailer\PHPMailer();
         Language::add_area('email');
         //---------- ENCONDING FOR 75TH CHAR ISSUE
         $this->mailer->Encoding = 'base64';
-        $this->mailer->IsSMTP();
-        //$this->mailer->SMTPAuth = true;
-        $this->mailer->SMTPAuth = false;
-        $this->mailer->SMTPKeepAlive = true;
-        //$this->mailer->SMTPSecure = 'SSL';
-        $this->mailer->SMTPSecure = false;
-        $this->mailer->Host = 'localhost';
-        $this->mailer->Port = 25;
-        $this->mailer->Username = '';
-        $this->mailer->Password = '';
+        if (Config::EMAIL_SMTP != '') {
+		    $this->mailer->IsSMTP();
+		    $this->mailer->SMTPAuth = true;
+		    $this->mailer->SMTPKeepAlive = true;
+		    $this->mailer->SMTPSecure = Config::EMAIL_SMTP_PORT === 587 ? 'tls' : PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+		    $this->mailer->Port = Config::EMAIL_SMTP_PORT;
+		    $this->mailer->Host = Config::EMAIL_SMTP; 
+		    $this->mailer->Username = Config::EMAIL_ADMIN;
+		    $this->mailer->Password = Config::EMAIL_SMTP_PW;
+        }
         $this->mailer->CharSet = 'UTF-8';
     }
 
@@ -130,6 +132,9 @@ class Mailer {
                 error_log($this->mailer->Body);
             } else if (!$this->mailer->send()) {
                 $this->oNotSent[] = $oRecipient;
+                //echo !extension_loaded('openssl')?"Not Available":"Available";
+                //var_dump($this->mailer);
+                //exit;
             }
             $this->archive_addresses .= $oRecipient->email . ' ';
 

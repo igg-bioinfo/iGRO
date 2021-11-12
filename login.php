@@ -181,10 +181,10 @@ switch ($multi_page) {
         $email = URL::get_onload_var("email");
         // get password expiration date
         // investigator
-        if ($oArea->id == Area::$ID_INVESTIGATOR) {
+        //if ($oArea->id == Area::$ID_INVESTIGATOR) {
             $res = Database::read('SELECT pswdate FROM user WHERE email = ?', [$email]);
-            $psw_date = is_null($res[0][0]) ? 0 : $res[0][0]->getTimestamp();
-        }
+            $psw_date = is_null($res[0][0]) ? 0 : Date::default_to_object($res[0][0], true)->getTimestamp();
+        //}
         $validity = URL::get_onload_var('validity');
         URL::changeable_vars_reset();
         if (isset($language_iso)) {
