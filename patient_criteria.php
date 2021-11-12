@@ -20,10 +20,44 @@ if ($is_area_allowed) {
 }
 
 
-//--------------------------------SPECIAL FUNCTIONS
-function special_draw($oField) {
+//--------------------------------FUNCTIONS
+function special_draw($oField, &$form) {
     $has_drawn = false;
     switch($oField->name) {
+        case 'age_range':
+            global $oPatient;
+            $trans = Language::find($oField->name.($oPatient->id_diagnosis == '2' ? '1' : ''));
+            $max_age = -1;
+            $min_age = -1;
+            if ($oPatient->id_diagnosis == '1') {
+                $max_age = $oPatient->gender == '1' ? 9 : 8;
+            } else if ($oPatient->id_diagnosis == '2') {
+                $min_age = 4;
+                $max_age = $oPatient->gender == '1' ? 9 : 8;
+            } else if ($oPatient->id_diagnosis == 3) { 
+                $max_age = 11;
+            }
+            $age = $oPatient->get_age($oPatient->date_first_visit);
+            $value = 1;
+            $trans = str_replace('{1}', $min_age.'', $trans);
+            $trans = str_replace('{0}', $max_age.'', $trans);
+            if ($min_age != -1) {
+                $value = $age >= $min_age  ? 1 : 0;
+            }
+            if ($max_age != -1 && $value == 1) {
+                $value = $age < $max_age ? 1 : 0;
+            }
+            $form .= Form_input::createLabel($oField->name, $trans.' ('.$age.' '.Language::find('years').')');
+            $form .= Form_input::createRadio($oField->name, Language::find('yes'), $value, 1, 3, false, '', true);
+            $form .= Form_input::createRadio($oField->name, Language::find('no'), $value, 0, 3, true, '', true);
+            $form .= Form_input::createHidden($oField->name, $value);
+            $form .= Form_input::br(true);
+            $has_drawn = true;
+            break;
+    }
+    if (Strings::startsWith($oField->name, 'ghd') || Strings::startsWith($oField->name, 'sga') || Strings::startsWith($oField->name, 'turner')) {
+        global $oPatient;
+        $has_drawn = !Strings::startsWith($oField->name, strtolower($oPatient->dia_short));
     }
     return $has_drawn;
 }
@@ -31,6 +65,13 @@ function special_draw($oField) {
 function special_trans($oField) {
     $trans = '';
     switch($oField->name) {
+        case 'age_range':
+            global $oPatient;
+            break;
+        case 'tanner_stage':
+            global $oPatient;
+            $trans = Language::find($oField->name.($oPatient->gender == '1' ? '1' : ''));
+            break;
         default:
             $trans = Language::find($oField->name);
             break;
@@ -46,6 +87,23 @@ function special_js($oField, $js) {
                 { $('#date_consent').prop('disabled',false); check_date('date_consent', true); } 
                 else { $('#date_consent').val(''); check_date('date_consent'); $('#date_consent').prop('disabled',true); } ";
             break;
+        case 'ghd_cphd':
+        case 'ghd_cphd_flaw':
+            $js .= " if ($('#ghd_cphd_1').is(':checked')) 
+                { $('#ghd_cphd_flaw').prop('disabled',false); check_text('ghd_cphd_flaw'); } 
+                else { $('#ghd_cphd_flaw').val(''); check_text('ghd_cphd_flaw', '', '', '', false); $('#ghd_cphd_flaw').prop('disabled',true); } ";
+            break;
+        case 'ghd_mphd':
+        case 'ghd_mphd_flaw':
+            $js .= " if ($('#ghd_mphd_1').is(':checked')) 
+                { $('#ghd_mphd_flaw').prop('disabled',false); check_text('ghd_mphd_flaw'); } 
+                else { $('#ghd_mphd_flaw').val(''); check_text('ghd_mphd_flaw', '', '', '', false); $('#ghd_mphd_flaw').prop('disabled',true); } ";
+            break;
+        default:
+            break;
+    }
+    if ($oField->type == Field::TYPE_BOOL && (Strings::startsWith($oField->name, 'ghd') || Strings::startsWith($oField->name, 'sga') || Strings::startsWith($oField->name, 'turner'))) {
+        $js .= JS::call_func('check_radio', [$oField->name]);
     }
     return $js;
 }
@@ -58,7 +116,7 @@ function draw_criteria($oCriteria) {
     $form .= HTML::set_bootstrap_cell(HTML::set_paragraph($oCriteria->get_title()), 12, true, '', 'text-align: center;');
     foreach($oCriteria->oFields as $oField) {
         $oField = $oCriteria->get_valued_field($oField->name);
-        if (special_draw($oField)) { continue; }
+        if (special_draw($oField, $form)) { continue; }
         switch($oField->type){
             case Field::TYPE_BOOL:
                 $js = $oField->required == '1' ? JS::call_func('check_radio', [$oField->name]) : '';
@@ -69,7 +127,7 @@ function draw_criteria($oCriteria) {
                     $oField->value, 0, 3, true, special_js($oField, $js), $is_view);
                 break;
             case Field::TYPE_DATE:
-                $js = JS::call_func('check_date', [$oField->name]);
+                $js = JS::call_func('check_date', [$oField->name, $oField->required == '1']);
                 $form .= Form_input::createDatePicker($oField->name, special_trans($oField), 
                     $oField->value, 4, true, special_js($oField, $js), $is_view);
                 break;
@@ -89,8 +147,16 @@ function draw_criteria($oCriteria) {
 function check_criteria($oCriteria, $correct_value) {
     foreach($oCriteria->oFields as $oField) {
         if ($oField->type == Field::TYPE_BOOL) {
-            $oField = $oCriteria->get_valued_field($oField->name);
-            if ($oField->value.'' != $correct_value.'') { return false; }
+            $to_check = true;
+            if (Strings::startsWith($oField->name, 'ghd') || Strings::startsWith($oField->name, 'sga') || Strings::startsWith($oField->name, 'turner')) {
+                global $oPatient;
+                $to_check = Strings::startsWith($oField->name, strtolower($oPatient->dia_short));
+                if (in_array($oField->name, ['ghd_cphd', 'ghd_mphd'])) { $to_check = false; }
+            }
+            if ($to_check) {
+                $oField = $oCriteria->get_valued_field($oField->name);
+                if ($oField->value.'' != $correct_value.'') { return false; }
+            }
         }
     }
     return true;

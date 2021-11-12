@@ -28,12 +28,14 @@ if ($act == 'save') {
     $oPatient->country_birth_other = Security::sanitize(INPUT_POST, 'country_birth_other');
     $oPatient->gender = Security::sanitize(INPUT_POST, 'gender');
     $oPatient->id_diagnosis = Security::sanitize(INPUT_POST, 'diagnosis');
-    $oPatient->date_onset = Date::screen_to_default(Security::sanitize(INPUT_POST, 'date_onset'));
     $oPatient->date_diagnosis = Date::screen_to_default(Security::sanitize(INPUT_POST, 'date_diagnosis'));
     $oPatient->date_first_visit = Date::screen_to_default(Security::sanitize(INPUT_POST, 'date_first_visit'));
     $oPatient->author = $oUser->id;
     $oPatient->ethnicity = Security::sanitize(INPUT_POST, 'ethnicity');
     $oPatient->ethnicity_other = Security::sanitize(INPUT_POST, 'ethnicity_other');
+    if ($oPatient->gender != '2' && $oPatient->id_diagnosis == '3') {
+        URL::redirect('patient_census', 6668);
+    }
 
     $oPatient->oCenter = $oUser->oCenter;
     if ($oPatient->id == 0) {
@@ -91,14 +93,11 @@ $form .= $ethn_other;
 $form .= Form_input::br(true);
 
 $form .= Form_input::createDatePicker('date_birth', Language::find('date_birth'), 
-    $oPatient->date_birth, 4, false, JS::call_func('check_dates', []), $is_view);
+    $oPatient->date_birth, 3, false, JS::call_func('check_dates', []), $is_view);
 $form .= Form_input::createDatePicker('date_first_visit', Language::find('visit_first'), 
-    $oPatient->date_onset, 4, true, JS::call_func('check_dates', []), $is_view);
-
-$form .= Form_input::createDatePicker('date_onset', Language::find('date_onset'), 
-    $oPatient->date_onset, 4, false, JS::call_func('check_dates', []), $is_view);
+    $oPatient->date_first_visit, 3, false, JS::call_func('check_dates', []), $is_view);
 $form .= Form_input::createDatePicker('date_diagnosis', Language::find('date_diagnosis'), 
-    $oPatient->date_diagnosis, 4, true, JS::call_func('check_dates', []), $is_view);
+    $oPatient->date_diagnosis, 3, true, JS::call_func('check_dates', []), $is_view);
 
 $form .= Form_input::br(true);
 $form .= Form_input::createLabel('diagnosis', Language::find('diagnosis'));

@@ -52,8 +52,6 @@ $bootstrap_rows .= HTML::set_row(
         HTML::set_row(HTML::set_bootstrap_cell(get_date_age('date_diagnosis'), 12)), 4, true, 'border')
 );
 $bootstrap_rows .= HTML::set_row(
-    HTML::set_bootstrap_nested_cell(Language::find('date_onset'), 
-        HTML::set_row(HTML::set_bootstrap_cell(get_date_age('date_onset'), 12)), 4, true, 'border') .
     HTML::set_bootstrap_nested_cell(Language::find('visit_first'), 
         HTML::set_row(HTML::set_bootstrap_cell(get_date_age('date_first_visit'), 12)), 4, true, 'border') .
     HTML::set_bootstrap_nested_cell(Language::find('visit_last'), 

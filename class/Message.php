@@ -29,6 +29,7 @@ class Message {
         ['id' => 6665, 'message' => 'ins_census_locked'],
         ['id' => 6666, 'message' => 'ins_criteria_modify'],
         ['id' => 6667, 'message' => 'ins_criteria_locked'],
+        ['id' => 6668, 'message' => 'census_male_turner'],
         //CRF DEBUG
         ['id' => 7777, 'message' => 'bad_validation'],
         ['id' => 7778, 'message' => 'bad_page_n'],
