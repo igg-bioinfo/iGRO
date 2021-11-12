@@ -24,10 +24,12 @@ $output_html = '';
 
 
 //-------------------------RESPONSE
-$oOutput = new Output($oVisit);
 $class_output = 'Output_' . $oVisit->type;
+$oOutput = null;
 if (class_exists($class_output)) {
     $oOutput = new $class_output($oVisit);
+} else {
+    $oOutput = new Output($oVisit);
 }
 
 //----CALCULATE RESULT FOR OLD VISITS WHICH DON'T HAVE THE OUTPUT SAVED
