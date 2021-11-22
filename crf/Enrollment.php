@@ -1,7 +1,7 @@
 <?php
 class Enrollment extends Abstract_CRF_page {
     private $form = "";
-    const RANGE_DAYS = 15;
+    const RANGE_DAYS = 21;
 
     function get_draw_custom_html($page_number) {
         if ($this->is_view) {
