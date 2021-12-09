@@ -35,6 +35,7 @@ foreach($users as $usr){
 //--------------------------------USERS TABLE
 $thead = HTML::set_tr(
     HTML::set_td(Language::find('center'), '', true) .
+    HTML::set_td(Language::find('PI'), '', true) .
     HTML::set_td(Language::find('email'), '', true) .
     HTML::set_td(Language::find('name'), '', true) .
     HTML::set_td(Language::find('surname'), '', true) .
@@ -50,6 +51,7 @@ foreach ($oUsers as $oUsr) {
     if ($color != '') { $color = 'background-color: '. $color; }
     $trs .= HTML::set_tr(
         HTML::set_td($oUsr->center) .
+        HTML::set_td($oUsr->oCenter && $oUsr->oCenter->pi_surname != '' ? $oUsr->oCenter->pi_surname : '-') .
         HTML::set_td($oUsr->email) .
         HTML::set_td($oUsr->name) .
         HTML::set_td($oUsr->surname) .
