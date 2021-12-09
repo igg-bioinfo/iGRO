@@ -35,7 +35,7 @@ foreach($users as $usr){
 //--------------------------------USERS TABLE
 $thead = HTML::set_tr(
     HTML::set_td(Language::find('center'), '', true) .
-    HTML::set_td(Language::find('PI'), '', true) .
+    HTML::set_td('PI', '', true) .
     HTML::set_td(Language::find('email'), '', true) .
     HTML::set_td(Language::find('name'), '', true) .
     HTML::set_td(Language::find('surname'), '', true) .
