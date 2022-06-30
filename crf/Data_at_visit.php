@@ -14,8 +14,6 @@ class Data_at_visit extends Abstract_CRF_page {
             $this->{'draw_page_'.$page_number}();
         }
         return $this->form;
-        
-        return $this->form;
     }
 
     private function draw_page_1() {
@@ -55,7 +53,7 @@ class Data_at_visit extends Abstract_CRF_page {
         $oField = $this->get_draw_field_object('zscore');
         $this->form .= HTML::set_td(Form_input::createInputText($oField->name, 'Z-score', $oField->value, 2, false, "check_number_unsigned('".$oField->name."', false, false, true, true)", '', $this->is_view));
         $oField = $this->get_draw_field_object('centile');
-        $this->form .= HTML::set_td(Form_input::createInputText($oField->name, 'Centile', $oField->value, 2, false, "check_number('".$oField->name."',true)", '', $this->is_view));
+        $this->form .= HTML::set_td(Form_input::createInputText($oField->name, 'Centile', $oField->value, 2, false, "check_number('".$oField->name."',false)", '', $this->is_view));
         $oField = $this->get_draw_field_object('calc_method');
         $this->form .= Form_input::createLabel($oField->name, Language::find('calc_method', 'enrollment'));
         $this->form .= Form_input::createRadio($oField->name, Language::find('classic'), $oField->value, 1, 2, false, "check_radio('".$oField->name."');", $this->is_view);

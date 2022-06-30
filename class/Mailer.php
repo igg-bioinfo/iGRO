@@ -27,12 +27,15 @@ class Mailer {
         //---------- ENCONDING FOR 75TH CHAR ISSUE
         $this->mailer->Encoding = 'base64';
         if (Config::EMAIL_SMTP != '') {
+        	//$this->mailer->AuthType = 'PLAIN'; //LOGIN
 		    $this->mailer->IsSMTP();
+			//$this->mailer->SMTPDebug = 4;
 		    $this->mailer->SMTPAuth = true;
 		    $this->mailer->SMTPKeepAlive = true;
-		    $this->mailer->SMTPSecure = Config::EMAIL_SMTP_PORT === 587 ? 'tls' : PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
-		    $this->mailer->Port = Config::EMAIL_SMTP_PORT;
+		    $this->mailer->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+      		//$this->mailer->Mailer = "smtp";
 		    $this->mailer->Host = Config::EMAIL_SMTP; 
+		    $this->mailer->Port = Config::EMAIL_SMTP_PORT;
 		    $this->mailer->Username = Config::EMAIL_ADMIN;
 		    $this->mailer->Password = Config::EMAIL_SMTP_PW;
         }
@@ -140,6 +143,7 @@ class Mailer {
 
             $this->mailer->clearAddresses();
         }
+        //exit;
         if ($to_archive) {
             $this->archive();
         }
@@ -158,7 +162,7 @@ class Mailer {
     //-----------------------------------------------------STATIC
     public static function get_admin() {
         $oUser = new User();
-        $oUser->name = Config::TITLE.' Administrator';
+        $oUser->name = 'BioInfo-IGG Admin';
         $oUser->email = Config::EMAIL_ADMIN;
         return $oUser;
     }
